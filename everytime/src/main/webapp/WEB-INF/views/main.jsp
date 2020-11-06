@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,14 +9,6 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="fb:app_id" content="258676027581965">
-<meta property="og:type" content="website">
-<meta property="og:image"
-	content="https://everytime.kr/images/og_image.png">
-<meta property="og:site_name" content="에브리타임">
-<meta property="og:title" content="에브리타임">
-<meta property="og:description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="description"
 	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="keywords"
@@ -25,13 +17,16 @@
 	content="7366738375e320e44bd1c743b364db13086a7b0e">
 <meta name="robots" content="noindex">
 <link type="text/css" href="/resources/css/common.css" rel="stylesheet">
-<link type="text/css" href="/resources/css/common.partial.css" rel="stylesheet">
+<link type="text/css" href="/resources/css/common.partial.css"
+	rel="stylesheet">
 <link type="text/css" href="/resources/css/container.community.css"
 	rel="stylesheet">
 <link href="https://everytime.kr/favicon.ico" rel="shortcut icon">
-<script type="text/javascript" async="" src="/js/analytics.js"></script>
-<script type="text/javascript" src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="/resources/js/extensions.underscore-min.js"></script>
+<script type="text/javascript" src="/resources/js/analytics.js"></script>
+<script type="text/javascript"
+	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
+<script type="text/javascript"
+	src="/resources/js/extensions.underscore-min.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript" src="/resources/js/community.side.js"></script>
 <script type="text/javascript" src="/resources/js/community.index.js"></script>
@@ -46,8 +41,8 @@
 				</p>
 			</div>
 			<div id="account">
-				<a href="login" class="button">로그인</a> <a
-					href="register" class="button red">회원가입</a>
+				<a href="login" class="button">로그인</a> <a href="register"
+					class="button red">회원가입</a>
 			</div>
 			<ul id="menu">
 				<li class="active"><a href="#">게시판</a></li>
@@ -63,16 +58,13 @@
 	<div id="submenu">
 		<div class="wrap">
 			<ul>
-				<li><a href="#" data-id="393887"
-					class="new">자유게시판</a></li>
-				<li><a href="#" data-id="260228"
-					class="new">비밀게시판</a></li>
+				<li><a href="#" data-id="393887" class="new">자유게시판</a></li>
+				<li><a href="#" data-id="260228" class="new">비밀게시판</a></li>
 				<li><a href="#" data-id="412760">새내기게시판</a></li>
 				<li><a href="#" data-id="260230">정보게시판</a></li>
-				<li><a href="#" data-id="367769">홍보게시판</a></li>
+				<li><a href="promotionboard" data-id="367769">홍보게시판</a></li>
 				<li><a href="#" data-id="419094">동아리·학회</a></li>
-				<li><a href="#"
-					class="search">게시판 찾기</a></li>
+				<li><a href="#" class="search">게시판 찾기</a></li>
 			</ul>
 			<hr>
 		</div>
@@ -93,8 +85,7 @@
 			</div>
 		</aside>
 		<div class="banners">
-			<a
-				href="#"><img
+			<a href="#"><img
 				src="/resources/images/20201101_jobfairfic_home.jpg"></a>
 		</div>
 		<div class="leftside">
@@ -103,29 +94,24 @@
 					<h3>
 						커뮤니티 이용을 위해<br> <strong>로그인</strong>이 필요합니다!
 					</h3>
-					<a href="login" class="button login">로그인</a> <a
-						href="register" class="button register">에브리타임
-						회원가입</a>
+					<a href="login" class="button login">로그인</a> <a href="register"
+						class="button register">에브리타임 회원가입</a>
 				</form>
 			</div>
 			<div class="card">
 				<div class="banner">
-					<a
-						href="#"><img
-						src="/resources/images/20201028_ipad_card.jpg"></a>
+					<a href="#"><img src="/resources/images/20201028_ipad_card.jpg"></a>
 				</div>
 			</div>
 			<div class="card">
 				<div class="banner">
-					<a
-						href="#"><img
+					<a href="#"><img
 						src="/resources/images/20201102_unity_Lego_card.png"></a>
 				</div>
 			</div>
 			<div class="card">
 				<div class="banner">
-					<a
-						href="#"><img
+					<a href="#"><img
 						src="/resources/images/20201102_tourbiz_card.jpg"></a>
 				</div>
 			</div>
@@ -138,8 +124,7 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="#">HOT 게시물<span>더
-								보기</span></a>
+						<a href="#">HOT 게시물<span>더 보기</span></a>
 					</h3>
 					<a class="list"><time>05/25 04:59</time>
 						<p>인증 후 이용가능</p>
@@ -149,8 +134,7 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="#">BEST 게시판<span>더
-								보기</span></a>
+						<a href="#">BEST 게시판<span>더 보기</span></a>
 					</h3>
 				</div>
 			</div>
@@ -161,20 +145,13 @@
 					<h3>
 						<a href="#">자유게시판</a>
 					</h3>
-					<a class="list" href="#"><time>11/04
-							18:30</time>
+					<a class="list" href="#"><time>11/04 18:30</time>
 						<p>과제가 너무 재밌어요</p>
-						<hr></a><a class="list"
-						href="#"><time>11/04
-							01:40</time>
+						<hr></a><a class="list" href="#"><time>11/04 01:40</time>
 						<p>대학영어 과제</p>
-						<hr></a><a class="list"
-						href="#"><time>11/03
-							13:36</time>
+						<hr></a><a class="list" href="#"><time>11/03 13:36</time>
 						<p>f받으려고 하는데</p>
-						<hr></a><a class="list"
-						href="#"><time>11/02
-							16:40</time>
+						<hr></a><a class="list" href="#"><time>11/02 16:40</time>
 						<p>지누션의 말해줘를 학생의 심정으로 개사해봤습니다</p>
 						<hr></a>
 				</div>
@@ -205,9 +182,8 @@
 							<li class="vote active">1</li>
 							<li class="comment active">0</li>
 						</ul>
-						<hr></a><a class="article"
-						href="#"><p>미디어 영상학과
-							1학년 1학기 교재 판매합니다.</p> <time>09/15 17:48</time>
+						<hr></a><a class="article" href="#"><p>미디어 영상학과 1학년 1학기
+							교재 판매합니다.</p> <time>09/15 17:48</time>
 						<ul class="status">
 							<li class="vote active">0</li>
 							<li class="comment active">0</li>
@@ -220,8 +196,7 @@
 					<h3>
 						<a href="#">정보게시판</a>
 					</h3>
-					<a class="list" href="#"><time>03/14
-							19:54</time>
+					<a class="list" href="#"><time>03/14 19:54</time>
 						<p>지역대학, 학습관 와이파이 (전국 공통)</p>
 						<hr></a>
 				</div>
@@ -229,22 +204,15 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="#">홍보게시판</a>
+						<a href="promotionboard">홍보게시판</a>
 					</h3>
-					<a class="list" href="#"><time>10/17
-							21:49</time>
+					<a class="list" href="#"><time>10/17 21:49</time>
 						<p>서울시에서 진행하는 MBTI모임</p>
-						<hr></a><a class="list"
-						href="#"><time>08/12
-							14:48</time>
+						<hr></a><a class="list" href="#"><time>08/12 14:48</time>
 						<p>제주청년농부와 함께 영농창업 준비해요:)</p>
-						<hr></a><a class="list"
-						href="#"><time>05/04
-							22:50</time>
+						<hr></a><a class="list" href="#"><time>05/04 22:50</time>
 						<p>연구참여자 모집 (만원 상당 상품권 증정)</p>
-						<hr></a><a class="list"
-						href="#"><time>03/03
-							16:40</time>
+						<hr></a><a class="list" href="#"><time>03/03 16:40</time>
 						<p>번역기 모음 사이트를 만들었어요.</p>
 						<hr></a>
 				</div>
@@ -254,20 +222,16 @@
 					<h3>
 						<a href="#">동아리·학회</a>
 					</h3>
-					<a class="list" href="#"><time>06/13
-							04:26</time>
+					<a class="list" href="#"><time>06/13 04:26</time>
 						<p>React 같이 공부하실 학우 구합니다!</p>
-						<hr></a><a class="list"
-						href="#"><time>19/04/04
-							15:36</time>
+						<hr></a><a class="list" href="#"><time>19/04/04 15:36</time>
 						<p>영상동아리 한번 모집해보려 합니다!</p>
 						<hr></a>
 				</div>
 			</div>
 			<hr>
 			<div class="bookstore">
-				<a class="item" href="#"><div
-						class="image"
+				<a class="item" href="#"><div class="image"
 						style="background-image: url(&quot;https://cf-cii.everytime.kr/9394d19a93cb53a81211043c07da93df703a677442d1ccf233ceb09c3865c0ef/1603893149386_0_thumb.jpg&quot;);"></div>
 					<h4>국제경영의이해(2학기, 워크북포함)</h4> <span class="price">7,000원</span></a><a
 					class="item" href="https://bookstore.everytime.kr/"><div
@@ -292,8 +256,7 @@
 			<li><a href="#">커뮤니티이용규칙</a></li>
 			<li><a href="#">공지사항</a></li>
 			<li><a href="#">문의하기</a></li>
-			<li class="copyright"><a href="#">©
-					에브리타임</a></li>
+			<li class="copyright"><a href="#">© 에브리타임</a></li>
 		</ul>
 	</div>
 	<script type="text/javascript">
