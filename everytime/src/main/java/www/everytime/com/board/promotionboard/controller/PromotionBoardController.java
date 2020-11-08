@@ -14,18 +14,14 @@ import www.everytime.com.board.promotionboard.service.PagingBean;
 import www.everytime.com.board.promotionboard.service.PromotionBoardService;
 
 @Controller
+@RequestMapping("/board/*")
 public class PromotionBoardController {
 	
 	@Autowired
 	private PromotionBoardService pbs;
 	
-	@RequestMapping("/promotionboard")
-	public String promotionboard() {
-		return "promotionboard";
-	}
-	
-	@RequestMapping("listBoard")
-	public String listBoard(PromotionBoard board, String pageNum, Model model) {
+	@RequestMapping("promotionboard")
+	public String promotionboard(PromotionBoard board, String pageNum, Model model) {
 		int rowPerPage = 20;
 		// 페이지가 지정되지 않으면 1페이지를 보여줘라
 		if (pageNum == null || pageNum.equals(""))
@@ -33,8 +29,8 @@ public class PromotionBoardController {
 
 		int currentPage = Integer.parseInt(pageNum);
 		int total = pbs.getTotal(board);
-		int startRow = (currentPage - 1) * rowPerPage + 1;
-		int endRow = startRow + rowPerPage - 1;
+		int startRow = (currentPage - 1) * rowPerPage;
+		int endRow = startRow + rowPerPage;
 		
 		board.setStartRow(startRow);
 		board.setEndRow(endRow);
@@ -45,7 +41,7 @@ public class PromotionBoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("PromotionBoard", board);
 		model.addAttribute("pb", pb);
-		return "listBoard";
+		return "promotionboard";
 	}
 
 

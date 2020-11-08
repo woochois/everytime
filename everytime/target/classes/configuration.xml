@@ -5,10 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias alias="member" type="www.everytime.com.member.model.Member"/>
-		<typeAlias alias="promotionboard" type="www.everytime.com.promotionboard.model.Board" />
+		<typeAlias alias="promotionboard" type="www.everytime.com.board.promotionboard.model.PromotionBoard" />
+		<typeAlias alias="promotionreply" type="www.everytime.com.reply.promotionreply.model.PromotionReply"/>
 	</typeAliases>
 	<mappers>
 		<mapper	resource="www/everytime/com/mapper/member.xml" />
-		<mapper resource="www/everytime/com/mapper/board.xml" />
+		<mapper resource="www/everytime/com/mapper/promotionboard.xml" />
+		<mapper resource="www/everytime/com/mapper/promotionreply.xml"/>
 	</mappers>
 </configuration>

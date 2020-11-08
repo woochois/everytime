@@ -134,7 +134,7 @@ $().ready(function () {
 				var $bookstore = $('<div></div>').addClass('bookstore');
 				$(this).find('item').each(function () {
 					var $itemData = $(this);
-					var $a = $('<a></a>').addClass('item').attr('href', 'https://bookstore.everytime.kr').appendTo($bookstore);
+					var $a = $('<a></a>').addClass('item').attr('href', '#').appendTo($bookstore);
 					var image = $itemData.attr('image') ? $itemData.attr('image') : '/images/attach.empty.png';
 					$('<div></div>').addClass('image').css('background-image', 'url("' + image + '")').appendTo($a);
 					$('<h4></h4>').html($itemData.attr('title')).appendTo($a);

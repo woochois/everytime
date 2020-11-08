@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="promotionreplyns">
+<select id="list" parameterType="integer" resultType="promotionreply">
+	select * from promotionreply where pbno=#{pbno} order by prno
+</select>
+<insert id="insert" parameterType="promotionreply">
+	<selectKey keyProperty="rno" order="BEFORE" resultType="integer">
+		select nvl(max(prno),0) + 1 from promotionreply
+	</selectKey>
+	insert into promotionreply values (#{prno},#{pbno},#{pnickname},#{prcontents}, default, default, default, default)
+</insert>
+<update id="delete" parameterType="integer">
+	update promotionreply set del=true where prno=#{prno}
+</update>
+<update id="update" parameterType="promotionreply">
+	update promotionreply set prcontents=#{prcontents}, updatedate=default
+		where prno=#{prno}
+</update>
+</mapper>

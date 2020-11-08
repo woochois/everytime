@@ -4,74 +4,40 @@
 <mapper namespace="promotionboardns">
 	<select id="list" parameterType="promotionboard"
 		resultType="promotionboard">
-		select * from
-		(select a.*, rownum rn from
-		(select * from promotionboard
-		<where>
-			<!-- # 은 값 // $ 는 변수 // 오라클에서 || 는 결합 -->
-			<if test="keyword != null and keyword !=  ''">
-				<if test="search == 'subcon">
-					subject like '%'|| #{keyword} ||'%' or
-					content like '%'||
-					#{keyword} ||'%'
-				</if>
-				<if test="search != 'subcon">
-					${search} like '%'|| #{keyword} ||'%'
-				</if>
-			</if>
-		</where>
-		order by ref desc, re_step) a )
-		where rn between #{startRow} and
-		#{endRow}
+		select * from promotionboard limit ${startRow}, ${endRow}
 	</select>
 
 	<select id="select" parameterType="promotionboard"
 		resultType="promotionboard">
-		select *
-		from promotionboard where pbno=#{pbno}
+		select * from promotionboard where pbno=#{pbno}
 	</select>
 
 	<select id="getTotal" resultType="integer">
-		select count(*) from promotionboard
-		<where>
-			<!-- # 은 값 // $ 는 변수 // 오라클에서 || 는 결합 -->
-			<if test="keyword != null and keyword !=  ''">
-				<if test="search == 'subcon">
-					subject like '%'|| #{keyword} ||'%' or
-					content like '%'||
-					#{keyword} ||'%'
-				</if>
-				<if test="search != 'subcon">
-					${search} like '%'|| #{keyword} ||'%'
-				</if>
-			</if>
-		</where>
-	</select>
-
-	<select id="maxpbno" resultType="integer">
-		<!-- ref와 pbno이 같을 수도 있고 다를 수도 있어서 별도로 생성해준다. -->
-		select nvl(max(pbno), 0) + 1 from promotionboard
+		select count(*) from
+		promotionboard
 	</select>
 
 	<insert id="insert" parameterType="promotionboard">
 		insert into promotionboard
-		values (#{pbno}, #{pnickname}, #{ptitle}, #{pcontents}, default, default, default, default)
+		values (#{pbno}, #{pnickname}, #{ptitle}, #{pcontents}, default,
+		default, default, default)
 	</insert>
 
 	<update id="updateReadCount">
 		update board set readcount = readcount + 1 where
 		pbno=#{pbno}
 	</update>
-
+	
 	<update id="update" parameterType="promotionboard">
-		update promotionboard set pnickname=#{pnickname}, ptitle=#{ptitle}, pcontents=#{pcontents}
-		where pbno=#{pbno}
+		update promotionboard set
+		pnickname=#{pnickname}, ptitle=#{ptitle}, pcontents=#{pcontents}
+		where
+		pbno=#{pbno}
 	</update>
 
 	<update id="delete" parameterType="integer">
 		update promotionboard set
-		del=true
-		where pbno = #{pbno}
+		del=true where pbno = #{pbno}
 	</update>
 </mapper>
 

@@ -41,7 +41,7 @@
 				</p>
 			</div>
 			<div id="account">
-				<a href="login" class="button">로그인</a> <a href="register"
+				<a href="/user/login" class="button">로그인</a> <a href="register"
 					class="button red">회원가입</a>
 			</div>
 			<ul id="menu">

@@ -1,6 +1,6 @@
-a<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -39,9 +39,9 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8"
 			</div>
 			<div id="account">
 				<a href="#" title="쪽지함" class="icon message">쪽지함</a> 
-				<a href="#" title="내 정보" class="icon my">내 정보</a> <input type="hidden"
-					id="userUserid" value="${id.id }"> <input type="hidden"
-					id="userSchool" value="${nickname.nickname }"> <input type="hidden"
+				<a href="mypage" title="내 정보" class="icon my">내 정보</a> <input type="hidden"
+					id="userUserid" value="${member.id }"> <input type="hidden"
+					id="userSchool" value="${member.nickname }"> <input type="hidden"
 					id="userCampus" value="379">
 			</div>
 			<ul id="menu">
@@ -92,10 +92,10 @@ a<%@ page language="java" contentType="text/html; charset=UTF-8"
 			<div class="card pconly">
 				<form class="logged">
 					<img src="https://cf-fpi.everytime.kr/0.png" class="picture">
-					<p class="nickname">${nickname.nickname }</p>
-					<p class="school">${id.id }</p>
+					<p class="nickname">${member.nickname }</p>
+					<p class="school">${member.id }</p>
 					<ul class="buttons">
-						<li><a href="#">내 정보</a></li>
+						<li><a href="mypage">내 정보</a></li>
 						<li><a href="logout">로그아웃</a></li>
 					</ul>
 					<hr>
