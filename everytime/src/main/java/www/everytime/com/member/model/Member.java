@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class Member {
-	String id;
-	String password;
-	String nickname;
-	String email;
-	String academyname;
-	boolean del;
+    private String id;
+    private String password;
+    private String nickname;
+    private String email;
+    private String academyname;
+    private boolean del;   
 }

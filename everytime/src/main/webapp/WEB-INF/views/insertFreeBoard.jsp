@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
-	location.href="main";
-	//location.href="loginForm";
-	//location.href="insertFreeBoard";
-</script>
+dd
 </body>
 </html>

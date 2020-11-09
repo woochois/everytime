@@ -19,11 +19,11 @@ public class MemberServiceImpl implements MemberService{
 		return md.insert(member);
 	}
 
-	public int delete(String id) {
-		return md.delete(id);
-	}
-
 	public int update(Member member) {
 		return md.update(member);
+	}
+
+	public int delete(String id) {
+		return md.delete(id);
 	}
 }

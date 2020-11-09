@@ -9,6 +9,15 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="fb:app_id" content="258676027581965">
+<meta property="og:type" content="website">
+<meta property="og:image"
+	content="https://everytime.kr/images/og_image.png">
+<meta property="og:url" content="https://everytime.kr/c/379">
+<meta property="og:site_name" content="에브리타임">
+<meta property="og:title" content="에브리타임">
+<meta property="og:description"
+	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="description"
 	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="keywords"
@@ -21,8 +30,8 @@
 	rel="stylesheet">
 <link type="text/css" href="/resources/css/container.community.css"
 	rel="stylesheet">
-<link href="https://everytime.kr/favicon.ico" rel="shortcut icon">
-<script type="text/javascript" src="/resources/js/analytics.js"></script>
+<link href="#" rel="shortcut icon">
+<script type="text/javascript" async="" src="/js/analytics.js"></script>
 <script type="text/javascript"
 	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
@@ -37,12 +46,15 @@
 			<div id="logo">
 				<a href="#"><img src="/resources/images/nav.logo.png"></a>
 				<p>
-					<span class="name multiple">에브리타임</span><span class="subname">일산학원</span>
+					<span class="name multiple">에브리타임즈</span><span class="subname">일산학원</span>
 				</p>
 			</div>
 			<div id="account">
-				<a href="/user/login" class="button">로그인</a> <a href="register"
-					class="button red">회원가입</a>
+			<c:set var="id" value="${member.id }" />
+			<c:if test="${empty id }">
+				<a href="loginForm" class="button">로그인</a> <a href="/registerForm"
+					class="button red">회원가입</a>'
+			</c:if>		
 			</div>
 			<ul id="menu">
 				<li class="active"><a href="#">게시판</a></li>
@@ -58,11 +70,11 @@
 	<div id="submenu">
 		<div class="wrap">
 			<ul>
-				<li><a href="#" data-id="393887" class="new">자유게시판</a></li>
+				<li><a href="/freeBoardList" data-id="393887" class="new">자유게시판</a></li>
 				<li><a href="#" data-id="260228" class="new">비밀게시판</a></li>
 				<li><a href="#" data-id="412760">새내기게시판</a></li>
 				<li><a href="#" data-id="260230">정보게시판</a></li>
-				<li><a href="promotionboard" data-id="367769">홍보게시판</a></li>
+				<li><a href="#" data-id="367769">홍보게시판</a></li>
 				<li><a href="#" data-id="419094">동아리·학회</a></li>
 				<li><a href="#" class="search">게시판 찾기</a></li>
 			</ul>
@@ -80,39 +92,63 @@
 				<a class="hamburger"></a>
 				<h1>한국방송통신대 에브리타임</h1>
 				<ol class="buttons">
-					<li><a href="login">로그인</a></li>
+					<li><a href="loginForm">로그인</a></li>
 				</ol>
 			</div>
 		</aside>
 		<div class="banners">
 			<a href="#"><img
-				src="/resources/images/20201101_jobfairfic_home.jpg"></a>
+				src="resources/images/20201101_jobfairfic_home.jpg"></a>
 		</div>
 		<div class="leftside">
 			<div class="card pconly">
-				<form class="login">
-					<h3>
-						커뮤니티 이용을 위해<br> <strong>로그인</strong>이 필요합니다!
-					</h3>
-					<a href="login" class="button login">로그인</a> <a href="register"
-						class="button register">에브리타임 회원가입</a>
-				</form>
+			
+				<c:if test="${empty id }">
+					<form class="login">
+						<h3>
+							커뮤니티 이용을 위해<br> <strong>로그인</strong>이 필요합니다!
+						</h3>
+						<a href="loginForm" class="button login">로그인</a> <a
+							href="registerForm" class="button register">에브리타임 회원가입</a>
+					</form>
+				</c:if>
+				<c:if test="${not empty id }">
+					<form class="logged">
+						<img src="https://cf-fpi.everytime.kr/0.png" class="picture">
+						<p class="nickname">${member.id }</p>
+						<p class="school">${member.nickname }</p>						
+						<ul class="buttons">
+							<li><a href="mypage">내 정보</a></li>
+							<li><a href="logout">로그아웃</a></li>
+						</ul>
+						<hr>
+						<div class="card">
+							<div class="menus">
+								<a href="/myarticle" class="myarticle">내가 쓴 글</a> <a
+									href="/mycommentarticle" class="mycommentarticle">댓글 단 글</a> <a
+									href="/myscrap" class="myscrap">내 스크랩</a>
+								<hr>
+							</div>
+						</div>
+					</form>
+				</c:if>
+				
 			</div>
 			<div class="card">
 				<div class="banner">
-					<a href="#"><img src="/resources/images/20201028_ipad_card.jpg"></a>
+					<a href="#"><img src="resources/images/20201028_ipad_card.jpg"></a>
 				</div>
 			</div>
 			<div class="card">
 				<div class="banner">
 					<a href="#"><img
-						src="/resources/images/20201102_unity_Lego_card.png"></a>
+						src="resources/images/20201102_unity_Lego_card.png"></a>
 				</div>
 			</div>
 			<div class="card">
 				<div class="banner">
 					<a href="#"><img
-						src="/resources/images/20201102_tourbiz_card.jpg"></a>
+						src="resources/images/20201102_tourbiz_card.jpg"></a>
 				</div>
 			</div>
 		</div>
@@ -165,7 +201,7 @@
 						<p>
 							로그인을 한 학생들만<br>이용할 수 있어요!
 						</p>
-						<a class="button" href="login">로그인</a>
+						<a class="button" href="loginForm">로그인</a>
 					</div>
 				</div>
 			</div>
@@ -204,7 +240,7 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="promotionboard">홍보게시판</a>
+						<a href="#">홍보게시판</a>
 					</h3>
 					<a class="list" href="#"><time>10/17 21:49</time>
 						<p>서울시에서 진행하는 MBTI모임</p>

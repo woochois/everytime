@@ -6,14 +6,14 @@ import lombok.Data;
 
 @Data
 public class PromotionBoard {
-	int pbno;
-	String pnickname;
-	String ptitle;
-	String pcontents;
-	int preadcount;
-	Date pregdate;
-	int precommendation;
-	boolean pdel;
+	private int pbno;
+	private String pnickname;
+	private String ptitle;
+	private String pcontents;
+	private int preadcount;
+	private Date pregdate;
+	private int precommendation;
+	private boolean pdel;
 	
 	
 	// 페이징용
