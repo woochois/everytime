@@ -1,6 +1,5 @@
 package www.everytime.com.board.freeboard.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,6 @@ public class FreeBoardController {
 	
 	@Autowired
 	private FreeBoardService fbs;
-	
 	@Autowired
 	private MemberService ms;
 	
@@ -34,10 +32,9 @@ public class FreeBoardController {
 	
 	// 게시글 목록
 	@RequestMapping("/freeBoardList/pageNum/{pageNum}")
-	public String freeBoardList(@PathVariable String pageNum, FreeBoard freeboard, Model model, HttpSession session) throws IOException {
-
+	public String freeBoardList(@PathVariable String pageNum, FreeBoard freeboard, Model model,HttpSession session) {
 		String id = (String)session.getAttribute("id");
-		Member member = ms.select(id);
+		Member member =ms.select(id);
 		
 		int rowPerPage = 20;
 		// 페이지가 지정되지 않으면 1페이지를 보여줌
@@ -52,10 +49,10 @@ public class FreeBoardController {
 		freeboard.setEndRow(endRow);
 		List<FreeBoard> freeBoardList = fbs.freeBoardList(freeboard);
 		PagingBean pb = new PagingBean(currentPage,rowPerPage,total);
+		model.addAttribute("nickname", member.getNickname());
 		model.addAttribute("freeBoardList", freeBoardList);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pb", pb);
-		model.addAttribute("nickname", member.getNickname());
 		return "freeBoardList";
 	}
 	// 게시글 입력
@@ -83,12 +80,12 @@ public class FreeBoardController {
 	}
 	
 	// 게시글 입력
-	@RequestMapping("insert")
-	public String insert(FreeBoard freeboard, Member member,@PathVariable String pageNum, HttpSession session, Model model) {
-		String id = (String)session.getAttribute("id");
-		Member mem = ms.select(id);
-		model.addAttribute("member", mem);
+	@RequestMapping("/insert")
+	public String insert(FreeBoard freeboard, String pageNum, HttpSession session, Model model) {
+		String id = (String)session.getAttribute("id");		
+		Member member = ms.select(id);		
 		model.addAttribute("nickname", member.getNickname());
+		model.addAttribute("pageNum", pageNum);
 		
 		fbs.insert(freeboard);
 		return "redirect:/freeBoardList/pageNum/1";
