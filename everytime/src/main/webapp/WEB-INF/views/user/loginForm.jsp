@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,7 +33,7 @@
 
 <div id="container" class="login">
     <h1 class="logo"><a href="/">에브리타임</a></h1>
-    <form action="/login" method="post">
+    <form action="/user/login" method="post">
       <p class="input"><input type="text" name="id" maxlength="20" class="text" placeholder="아이디"></p>
       <p class="input"><input type="password" name="password" maxlength="20" class="text" placeholder="비밀번호"></p>
       <input type="hidden" name="redirect" value="/">
@@ -42,7 +42,7 @@
       <p class="find"><a href="#">아이디/비밀번호 찾기</a></p>
       <p class="register">
         <span>에브리타임에 처음이신가요?</span>
-        <a href="/registerForm">회원가입</a>
+        <a href="/user/registerForm">회원가입</a>
       </p>
     </form>
   </div>
@@ -54,19 +54,5 @@
       <li class="copyright"><a href="/">&copy; 에브리타임</a></li>
     </ul>
   </address>
-
-<!--   <script type="text/javascript">
-    var _serverTime = 1604572185947;
-    var _clientTime = new Date().getTime();
-    var _diffTime = _clientTime - _serverTime;
-    var _apiServerUrl = 'https://api.everytime.kr';
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22022140-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-22022140-4');
-  </script> -->
 </body>
 </html>

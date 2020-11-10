@@ -3,7 +3,8 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <title>Insert title here</title></head><body>
 <script type="text/javascript">
-	location.href="main";
+	alert("로그아웃 되었습니다");
+	location.href="/user/loginForm";
 </script>
 </body>
 </html>

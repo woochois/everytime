@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <!DOCTYPE html>
 <!-- saved from url=(0027)https://everytime.kr/367769 -->
 <html lang="ko">

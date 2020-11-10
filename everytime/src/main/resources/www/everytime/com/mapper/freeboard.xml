@@ -2,17 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="freeboardns">
-<resultMap type="freeboard" id="freeboardResult">
-	<result property="fbno" column="fbno"/>
-	<result property="fnickname" column="fnickname"/>
-	<result property="ftitle" column="ftitle"/>
-	<result property="fcontents" column="fcontents"/>
-	<result property="fregdate" column="fregdate"/>
-	<result property="fdel" column="fdel"/>
-</resultMap>
 
 <select id="freeBoardList" parameterType="freeboard" resultType="freeboard">
-	select * from freeboard order by fbno desc limit ${startRow}, ${endRow}
+	select * from freeboard 
+    	<where>
+    		<if test="keyword!=null and keyword!=''">
+    			<if test="search=='all'">
+    				fnickname like concat('%',#{keyword},'%') or
+    				ftitle like concat('%',#{keyword},'%') or
+    				fcontents like concat('%',#{keyword},'%')
+    				
+    			</if>
+    			<if test="search!='all'">
+    				${search} like concat('%',#{keyword},'%')
+    			</if>
+    		</if>
+    	</where> 
+	order by fbno desc limit ${startRow}, ${endRow}
 </select>
 
 <select id="select" resultType="freeboard">
@@ -29,6 +35,18 @@
 
 <select id="getTotal" parameterType="freeboard" resultType="integer">
 	select count(*) from freeboard
+			<where>
+    		<if test="keyword!=null and keyword!=''">
+    			<if test="search=='all'">
+    				fnickname like concat('%',#{keyword},'%') or
+    				ftitle like concat('%',#{keyword},'%') or
+    				fcontents like concat('%',#{keyword},'%')
+    			</if>    			
+    			<if test="search!='all'">
+    				${search} like concat('%',#{keyword},'%')
+    			</if>
+    		</if>
+    	</where> 
 </select>
 
 <update id="update" parameterType="freeboard">

@@ -25,13 +25,13 @@ public class FreeBoardController {
 	@Autowired
 	private MemberService ms;
 	
-	@RequestMapping("/freeBoardList")
-	public String init() {		
-		return "redirect:/freeBoardList/pageNum/1";				
+	@RequestMapping("/board/freeboard/freeBoardList")
+	public String init() {	
+		return "redirect:/board/freeboard/freeBoardList/pageNum/1";				
 	}
 	
 	// 게시글 목록
-	@RequestMapping("/freeBoardList/pageNum/{pageNum}")
+	@RequestMapping("/board/freeboard/freeBoardList/pageNum/{pageNum}")
 	public String freeBoardList(@PathVariable String pageNum, FreeBoard freeboard, Model model,HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		Member member =ms.select(id);
@@ -43,44 +43,23 @@ public class FreeBoardController {
 		}
 		int currentPage = Integer.parseInt(pageNum);
 		int total = fbs.getTotal(freeboard);
-		int startRow = (currentPage - 1) * rowPerPage;
-		int endRow = startRow + rowPerPage -1;
+		int startRow = (currentPage - 1) * rowPerPage;  
+		int endRow = rowPerPage ;   
 		freeboard.setStartRow(startRow);
 		freeboard.setEndRow(endRow);
 		List<FreeBoard> freeBoardList = fbs.freeBoardList(freeboard);
 		PagingBean pb = new PagingBean(currentPage,rowPerPage,total);
+		String[] tit = {"전체", "작성자", "제목", "내용"};
+		model.addAttribute("tit",tit);
 		model.addAttribute("nickname", member.getNickname());
 		model.addAttribute("freeBoardList", freeBoardList);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pb", pb);
-		return "freeBoardList";
-	}
-	// 게시글 입력
-	@RequestMapping("/freeBoardInsertForm/no/{no}/pageNum/{pageNum}")
-	public String freeBoardInsertForm(@PathVariable String no, @PathVariable String pageNum, Model model) {
-		int fbno = 0;
-		if(no != null && no.equals("") && !no.equals("null")) {
-			fbno = Integer.parseInt(no);
-			FreeBoard freeboard = fbs.select(fbno);
-		}
-		model.addAttribute("fbno", fbno);
-		model.addAttribute("pageNum", pageNum);
-		return "freeBoardInsertForm";
-	}
-	// 게시글 입력 성공여부 alert
-	@RequestMapping("/freeBoardInsert")
-	public String freeBoardInsert(FreeBoard freeboard, String pageNum, Model model, HttpServletRequest request) {
-		int fbno = 0;
-		freeboard.setFbno(fbno);
-		int result = fbs.insert(freeboard);
-		
-		model.addAttribute("result", result);
-		model.addAttribute("pageNum", pageNum);
-		return "freeBoardInsert";		
+		return "/board/freeboard/freeBoardList/pageNum/{pageNum}";
 	}
 	
 	// 게시글 입력
-	@RequestMapping("/insert")
+	@RequestMapping("/board/freeboard/insert")
 	public String insert(FreeBoard freeboard, String pageNum, HttpSession session, Model model) {
 		String id = (String)session.getAttribute("id");		
 		Member member = ms.select(id);		
@@ -88,10 +67,10 @@ public class FreeBoardController {
 		model.addAttribute("pageNum", pageNum);
 		
 		fbs.insert(freeboard);
-		return "redirect:/freeBoardList/pageNum/1";
+		return "redirect:/board/freeboard/freeBoardList/pageNum/1";
 	}
 	// 게시글 상세 내역
-	@RequestMapping("/mypage/fbno/{fbno}/pageNum/{pageNum}")
+	@RequestMapping("/user/freeboard/mypage/fbno/{fbno}/pageNum/{pageNum}")
 	public String mypage(@PathVariable int fbno, @PathVariable String pageNum, Model model) {
 		fbs.updateReadCount(fbno);
 		FreeBoard freeboard = fbs.select(fbno);
@@ -101,7 +80,7 @@ public class FreeBoardController {
 	}
 	
 	//게시글 수정
-	@RequestMapping("/freeBoardUpdateForm/fbno/{fbno}/pageNum/{pageNum}")
+	@RequestMapping("freeBoardUpdateForm/fbno/{fbno}/pageNum/{pageNum}")
 	public String freeBoardUpdateForm(@PathVariable int fbno, @PathVariable String pageNum, Model model) {
 		FreeBoard freeboard = fbs.select(fbno);
 		model.addAttribute("freeboard", freeboard);
@@ -110,7 +89,7 @@ public class FreeBoardController {
 	}
 	
 	//게시글 수정 성공여부 alert
-	@RequestMapping("/freeBoardUpdate")
+	@RequestMapping("freeBoardUpdate")
 	public String freeBoardUpdate(FreeBoard freeboard, String pageNum, Model model) {
 		int result = fbs.update(freeboard);
 		model.addAttribute("result", result);
@@ -120,28 +99,11 @@ public class FreeBoardController {
 	}
 	
 	//게시글 삭제 및 성공 여부
-	@RequestMapping("/freeBoardDelete/fbno/{fbno}/pageNum/{pageNum}")
+	@RequestMapping("freeBoardDelete/fbno/{fbno}/pageNum/{pageNum}")
 	public String freeBoardDelete(@PathVariable int fbno, @PathVariable String pageNum, Model model) {
 		int result = fbs.delete(fbno);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 		return "freeBoardDelete";
 	}
-	
-	// 임의 데이터 입력
-	@RequestMapping("/insertFreeBoard")
-	public String insertFreeBoard(HttpServletRequest request) {
-	
-		for (int i =1; i <= 10; i++ ) {
-			FreeBoard freeboard= new FreeBoard();
-			freeboard.setFtitle("test 제목"+i);
-			freeboard.setFnickname("nickname"+ i);
-			freeboard.setFcontents("contents"+i);
-			
-			
-			fbs.insert(freeboard);
-		}
-		return "insertFAQ";
-	}
-	
 }

@@ -14,7 +14,7 @@ import www.everytime.com.board.promotionboard.service.PagingBean;
 import www.everytime.com.board.promotionboard.service.PromotionBoardService;
 
 @Controller
-@RequestMapping("/board/*")
+@RequestMapping("/board/freeboard/*")
 public class PromotionBoardController {
 	
 	@Autowired

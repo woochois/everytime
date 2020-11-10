@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -34,7 +34,7 @@
 	rel="stylesheet">
 <link type="text/css" href="/resources/css/container.modal.css"
 	rel="stylesheet">
-<link href="https://everytime.kr/favicon.ico" rel="shortcut icon">
+<link href="#" rel="shortcut icon">
 
 <link rel="stylesheet"
 	href="/resources/bootstrap/css/bootstrap-grid.min.css">
@@ -42,7 +42,8 @@
 	href="/resources/bootstrap/css/bootstrap-reboot.min.css">
 
 
-<script type="text/javascript" async="" src="resources/js/analytics.js"></script>
+
+<script type="text/javascript" async="" src="/resources/js/analytics.js"></script>
 <script type="text/javascript"
 	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
@@ -55,12 +56,13 @@
 <script type="text/javascript" src="/resources/js/board.index.js"></script>
 <script type="text/javascript" src="/resources/js/community.side.js"></script>
 <script type="text/javascript" src="/resources/js/message.send.js"></script>
+
 </head>
-<body style="">
+<body>
 	<nav>
 		<div class="wrap">
 			<div id="logo">
-				<a href="/main"><img src="/resources/images/nav.logo.png"></a>
+				<a href="main"><img src="/resources/images/nav.logo.png"></a>
 				<p>
 					<span class="name multiple">에브리타임</span><span class="subname">일산학원</span>
 				</p>
@@ -114,52 +116,54 @@
 			<div class="title">
 				<a class="hamburger"></a>
 				<h1>
-					<a href="/freeBoardList">자유게시판</a>
+					<a href="/board/freeboard/freeBoardList">자유게시판</a>
 				</h1>
 			</div>
 		</aside>
 		<div class="wrap title">
 			<h1>
-				<a href="/freeBoardList">자유게시판</a>
+				<a href="/board/freeboard/freeBoardList">자유게시판</a>
 			</h1>
 			<hr>
 		</div>
 		<div class="wrap articles">
 
 			<!-- <a id="writeArticleButton">새 글을 작성해주세요!</a> -->
-		<form action="/insert" id="fbi" name="fbi">
 
-            <div class="panel-group" id="accordion" role="tablist"
-               aria-multiselectable="true">
+			<form action="/board/freeboard/insert">
 
-               <div class="panel panel-default">
-                  <div class="panel-heading" role="tab">
+				<div class="panel-group" id="accordion" role="tablist"
+					aria-multiselectable="true">
 
-                     <a role="button" data-toggle="collapse" data-parent="#accordion"
-                        href="#newArticle" aria-expanded="false">새 글을 작성해주세요!</a>
-                  </div>
-                  <div id="newArticle" class="panel-collapse collapse"
-                     role="tabpanel">
-                     <div class="panel-body">
-                        <div>
-                        
-                        <input type="hidden" name="fnickname" value="${nickname}" />
-                        <br />
-                           <input type="text" name="ftitle" required="required"
-                              autofocus="autofocus" placeholder="제목 입력" />
-                        </div>
-                        <div>
-                           <textarea name="fcontents"  cols="30" rows="10"
-                              placeholder="내용 입력"></textarea>
-                        </div>
-                        <div><button type="submit" >확인</button></div>
-                     </div>
-                  </div>
-               </div>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab">
 
-            </div>
+							<a role="button" data-toggle="collapse" data-parent="#accordion"
+								href="#newArticle" aria-expanded="false">새 글을 작성해주세요!</a>
+						</div>
+						<div id="newArticle" class="panel-collapse collapse"
+							role="tabpanel">
+							<div class="panel-body">
+								<div>
+									<input type="hidden" name="fnickname" value="${nickname}" /> <br />
+									<input type="text" name="ftitle" required="required"
+										autofocus="autofocus" placeholder="제목 입력" />
+								</div>
+								<div>
+									<textarea name="fcontents" cols="30" rows="10"
+										placeholder="내용 입력"></textarea>
+								</div>
+								<div>
+									<!-- <input type="button" value="확인" id="insert"/> -->
+									<input type="submit" value="확인" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-         </form>
+			</form>
+
 
 			<c:forEach var="freeBoardList" items="${freeBoardList}">
 				<article>
@@ -178,18 +182,62 @@
 			</c:forEach>
 
 			<div class="clearBothOnly"></div>
-			<div class="pagination">
-				<form id="searchArticleForm" class="search">
-					<select name="search_type">
-						<option value="4">전체</option>
-						<option value="3">해시태그</option>
-						<option value="2">글 제목</option>
-						<option value="1">글 내용</option>
-					</select> <input name="keyword" placeholder="검색어를 입력하세요." class="text">
-				</form>
-				<a href="https://everytime.kr/389131/p/2" class="next">다음</a>
+			<!-- search -->
+			<form id="/freeBoardList/pageNum/1" method="get">
+				<select name="search">
+					<c:forTokens var="item" items="all,fnickname,ftitle,fcontents"
+						delims="," varStatus="i">
+						<c:if test="${freeboard.search==item }">
+							<option value="${item }" selected="selected">${tit[i.index]}</option>
+						</c:if>
+						<c:if test="${freeboard.search!=item }">
+							<option value="${item }">${tit[i.index]}</option>
+						</c:if>
+					</c:forTokens>
+				</select>
+				<%-- <input type="submit" name="keyword" placeholder="검색어를 입력하세요." class="text" value="${freeboard.keyword }"> --%>
+				<input type="text" name="keyword" placeholder="검색어를 입력하세요."
+					value="${freeboard.keyword }"> <input type="submit"
+					value="확인">
+			</form>
+			<!-- pagenation -->
+			<div align="center">
+				<ul class="pagination">
+					<c:if test="${pb.startPage > pb.pagePerBlock}">
+						<li><a
+							href="${path}/freeBoardList/pageNum/1?search=${freeboard.search}&keyword=${freeboard.keyword}">
+								<span class="glyphicon glyphicon-backward"></span>
+						</a></li>
+						<li><a
+							href="${path}/freeBoardList/pageNum/${pb.startPage-1}?search=${freeboard.search}&keyword=${freeboard.keyword}">
+								<span class="glyphicon glyphicon-triangle-left"></span>
+						</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPage}" end="${pb.endPage}">
+						<c:if test="${i==pb.currentPage}">
+							<li class="active"><a
+								href="${path}/freeBoardList/pageNum/${i}?search=${freeboard.search}&keyword=${freeboard.keyword}">${i}</a></li>
+						</c:if>
+						<c:if test="${i!=pb.currentPage}">
+							<li><a
+								href="${path}/freeBoardList/pageNum/${i}?search=${freeboard.search}&keyword=${freeboard.keyword}">${i}</a></li>
+						</c:if>
+					</c:forEach>
+					<c:if test="${pb.endPage < pb.totalPage }">
+						<li><a
+							href="${path}/freeBoardList/pageNum/${pb.endPage+1}?search=${freeboard.search}&keyword=${freeboard.keyword}">
+								<span class="glyphicon glyphicon-triangle-right"></span>
+						</a></li>
+						<li><a
+							href="${path}/freeBoardList/pageNum/${pb.totalPage}?search=${freeboard.search}&keyword=${freeboard.keyword}">
+								<span class="glyphicon glyphicon-forward"></span>
+						</a></li>
+					</c:if>
+				</ul>				
 			</div>
+			
 		</div>
+
 		<hr>
 		<div class="rightside">
 			<div class="card">

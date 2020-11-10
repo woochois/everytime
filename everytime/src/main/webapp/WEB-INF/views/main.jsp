@@ -9,15 +9,6 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="fb:app_id" content="258676027581965">
-<meta property="og:type" content="website">
-<meta property="og:image"
-	content="https://everytime.kr/images/og_image.png">
-<meta property="og:url" content="https://everytime.kr/c/379">
-<meta property="og:site_name" content="에브리타임">
-<meta property="og:title" content="에브리타임">
-<meta property="og:description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="description"
 	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="keywords"
@@ -52,7 +43,7 @@
 			<div id="account">
 			<c:set var="id" value="${member.id }" />
 			<c:if test="${empty id }">
-				<a href="loginForm" class="button">로그인</a> <a href="/registerForm"
+				<a href="/user/loginForm" class="button">로그인</a> <a href="/user/registerForm"
 					class="button red">회원가입</a>'
 			</c:if>		
 			</div>
@@ -70,11 +61,11 @@
 	<div id="submenu">
 		<div class="wrap">
 			<ul>
-				<li><a href="/freeBoardList" data-id="393887" class="new">자유게시판</a></li>
+				<li><a href="/board/freeboard/freeBoardList" data-id="393887" class="new">자유게시판</a></li>
 				<li><a href="#" data-id="260228" class="new">비밀게시판</a></li>
 				<li><a href="#" data-id="412760">새내기게시판</a></li>
 				<li><a href="#" data-id="260230">정보게시판</a></li>
-				<li><a href="#" data-id="367769">홍보게시판</a></li>
+				<li><a href="/board/promotionboard/promotionboard" data-id="367769">홍보게시판</a></li>
 				<li><a href="#" data-id="419094">동아리·학회</a></li>
 				<li><a href="#" class="search">게시판 찾기</a></li>
 			</ul>
@@ -92,7 +83,7 @@
 				<a class="hamburger"></a>
 				<h1>한국방송통신대 에브리타임</h1>
 				<ol class="buttons">
-					<li><a href="loginForm">로그인</a></li>
+					<li><a href="/user/loginForm">로그인</a></li>
 				</ol>
 			</div>
 		</aside>
@@ -108,8 +99,8 @@
 						<h3>
 							커뮤니티 이용을 위해<br> <strong>로그인</strong>이 필요합니다!
 						</h3>
-						<a href="loginForm" class="button login">로그인</a> <a
-							href="registerForm" class="button register">에브리타임 회원가입</a>
+						<a href="/user/loginForm" class="button login">로그인</a> <a
+							href="/user/registerForm" class="button register">에브리타임 회원가입</a>
 					</form>
 				</c:if>
 				<c:if test="${not empty id }">
@@ -118,8 +109,8 @@
 						<p class="nickname">${member.id }</p>
 						<p class="school">${member.nickname }</p>						
 						<ul class="buttons">
-							<li><a href="mypage">내 정보</a></li>
-							<li><a href="logout">로그아웃</a></li>
+							<li><a href="/user/mypage">내 정보</a></li>
+							<li><a href="/user/logout">로그아웃</a></li>
 						</ul>
 						<hr>
 						<div class="card">
@@ -201,7 +192,7 @@
 						<p>
 							로그인을 한 학생들만<br>이용할 수 있어요!
 						</p>
-						<a class="button" href="loginForm">로그인</a>
+						<a class="button" href="/user/loginForm">로그인</a>
 					</div>
 				</div>
 			</div>

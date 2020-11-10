@@ -16,7 +16,7 @@ public class MemberController {
 	@Autowired
 	private MemberService ms;
 	
-	@RequestMapping("login")
+	@RequestMapping("/user/login")
 	public String loginForm(Member member, Model model, HttpSession session) {
 		int result = 0;
 		Member mem = ms.select(member.getId());
@@ -29,15 +29,15 @@ public class MemberController {
 		}
 	
 		model.addAttribute("result", result);
-		return "login";
+		return "/user/login";
 	}
 	
-	@RequestMapping("loginForm")
+	@RequestMapping("/user/loginForm")
 	public String loginForm() {
-		return "loginForm";
+		return "/user/loginForm";
 	}
 	
-	@RequestMapping("register")
+	@RequestMapping("/user/register")
 	public String register(Member member, Model model, HttpSession session) {
 		int result = 0;
 		Member mem = ms.select(member.getId());
@@ -47,12 +47,12 @@ public class MemberController {
 			result = -1;
 		}
 		model.addAttribute("result", result);
-		return "register";
+		return "/user/register";
 	}
 	
-	@RequestMapping("registerForm")
+	@RequestMapping("/user/registerForm")
 	public String registerForm() {
-		return "registerForm";
+		return "/user/registerForm";
 	}
 	
 	@RequestMapping(value="idChk",produces="text/html; charset=utf-8")
@@ -65,39 +65,39 @@ public class MemberController {
 		return msg;
 	}
 	
-	@RequestMapping("updateForm")
+	@RequestMapping("/user/updateForm")
 	public String updateForm(Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
-		return "updateForm";
+		return "/user/updateForm";
 	}
 	
-	@RequestMapping("update")
+	@RequestMapping("/user/update")
 	public String update(Member member, Model model, HttpSession session) {
-		return "update";
+		return "/user/update";
 	}
 	
-	@RequestMapping("mypage")
+	@RequestMapping("/user/mypage")
 	public String view(Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
-		return "mypage";
+		return "/user/mypage";
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("/user/delete")
 	public String delete(Model model, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		int result = ms.delete(id);
 		if(result >0) session.invalidate();
 		model.addAttribute("result", result);		
-		return "delete";
+		return "/user/delete";
 	}
 	
-	@RequestMapping("logout")
+	@RequestMapping("/user/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "logout";
+		return "/user/logout";
 	}
 }
