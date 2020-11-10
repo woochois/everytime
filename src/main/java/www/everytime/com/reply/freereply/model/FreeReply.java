@@ -9,7 +9,7 @@ public class FreeReply {
 	private int frrno;
     private int frbno; 
     private String frnickname;
-    private String frrcontents;
+    private String frcontents;
     private Date frregdate;
     private int frrecommendation;
     private boolean frdel;

@@ -163,7 +163,7 @@
 				<h2 data-v-cd48e290="">기타</h2>
 				<a data-v-cd48e290="" href="#"
 					class="item">정보 동의 설정</a> <a data-v-cd48e290=""
-					href="#" class="item">회원 탈퇴</a>
+					href="/delete" class="item">회원 탈퇴</a>
 			</section>
 		</div>
 		<footer data-v-20651ef4="" data-v-cd48e290="">

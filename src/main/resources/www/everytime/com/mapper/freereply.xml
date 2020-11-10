@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freereplyns">
+
+<select id="list" parameterType="integer" resultType="FreeReply">
+	select * from freereply where frbno=#{frbno} and frdel=false order by frrno
+</select>
+
+<insert id="insert" parameterType="FreeReply">
+	insert into freereply (frbno, frnickname, frcontents) values (#{frbno}, #{frnickname}, #{frcontents})
+</insert>
+
+<update id="delete" parameterType="integer">
+	update freereply set frdel=true where frrno=#{frrno}
+</update>
+
+<update id="update" parameterType="FreeReply">
+	update freereply set frcontents=#{frcontents}, frregdate=current_timestamp where frrno=#{frrno}
+</update>
+</mapper>

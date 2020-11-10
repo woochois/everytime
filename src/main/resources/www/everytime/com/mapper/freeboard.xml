@@ -14,15 +14,16 @@
 <select id="freeBoardList" parameterType="freeboard" resultType="freeboard">
 	select * from freeboard 
     	<where>
+    		fdel=false
     		<if test="keyword!=null and keyword!=''">
     			<if test="search=='all'">
-    				fnickname like concat('%',#{keyword},'%') or
+    				and fnickname like concat('%',#{keyword},'%') or
     				ftitle like concat('%',#{keyword},'%') or
     				fcontents like concat('%',#{keyword},'%')
     				
     			</if>
     			<if test="search!='all'">
-    				${search} like concat('%',#{keyword},'%')
+    				and ${search} like concat('%',#{keyword},'%')
     			</if>
     		</if>
     	</where> 
@@ -58,11 +59,10 @@
 </select>
 
 <update id="update" parameterType="freeboard">
-	update freeboard set fnickname=#{nickname}, ftitle=#{ftitle},
-	fcontents=#{fcontents} where fbno=#{fbno} 
+	update freeboard set ftitle=#{ftitle}, fcontents=#{fcontents} where fbno=#{fbno} 
 </update>
 
 <update id="delete" parameterType="integer">
-	update freeboard set del=true where fbno=#{fbno}
+	update freeboard set fdel=true where fbno=#{fbno}
 </update>
 </mapper>
