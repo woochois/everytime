@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import www.everytime.com.board.freeboard.model.FreeBoard;
 import www.everytime.com.reply.freereply.dao.FreeReplyDao;
 import www.everytime.com.reply.freereply.model.FreeReply;
 
@@ -13,27 +14,24 @@ public class FreeReplyServiceImpl implements FreeReplyService{
 	@Autowired
 	private FreeReplyDao frd;
 
-	@Override
 	public List<FreeReply> list(FreeReply freereply) {
 		return frd.list(freereply);
 	}
 
-	@Override
-	public void insert(FreeReply fr) {
-		frd.insert(fr);
+	public void insert(FreeReply freereply) {
+		frd.insert(freereply);
+	}
+
+	public int delete(int frrno) {
+		return frd.delete(frrno);
 		
 	}
 
-	@Override
-	public void delete(FreeReply fr) {
-		frd.delete(fr);
-		
+	public void update(FreeReply freereply) {
+		frd.update(freereply);
 	}
 
-	@Override
-	public void update(FreeReply fr) {
-		frd.update(fr);
-		
+	public int select(int fbno) {
+		return frd.select(fbno);
 	}
-
 }

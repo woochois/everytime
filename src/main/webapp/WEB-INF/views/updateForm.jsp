@@ -23,7 +23,7 @@
     <h2>회원 정보 수정</h2>
     <div class="input">
       <div class="label"><label>아이디</label><p>영문, 숫자, 4~20자</p></div>
-      <input type="text" name="id" maxlength="20" placeholder="아이디" autocomplete="off" value="${member.id }">
+      <input type="text" name="userid" maxlength="20" placeholder="아이디" autocomplete="off" value="${member.id }">
       <div class="caution"></div>
     </div>
     <div class="input">
@@ -31,6 +31,11 @@
       <input type="password" name="password" maxlength="20" placeholder="비밀번호">
       <div class="caution"></div>
       <input type="password" name="password2" maxlength="20" placeholder="비밀번호 확인">
+      <div class="caution"></div>
+    </div>
+    <div class="input">
+      <div class="label"><label>이메일</label></div>
+      <input type="email" name="email" placeholder="이메일" autocomplete="off">
       <div class="caution"></div>
     </div>
     <div class="input">
@@ -44,5 +49,19 @@
     </div>
     <input type="submit" value="수정">
   </form>
+
+  <script type="text/javascript">
+    var _serverTime = 1604572463616;
+    var _clientTime = new Date().getTime();
+    var _diffTime = _clientTime - _serverTime;
+    var _apiServerUrl = 'https://api.everytime.kr';
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22022140-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-22022140-4');
+  </script>
 </body>
 </html>

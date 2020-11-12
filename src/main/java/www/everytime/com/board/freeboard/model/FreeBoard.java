@@ -16,6 +16,9 @@ public class FreeBoard {
     private int frecommendation;
     private boolean fdel;
     
+    //댓글 갯수용
+    private int commentCount;
+    
 	//페이징용
 	private int startRow;
 	private int endRow;

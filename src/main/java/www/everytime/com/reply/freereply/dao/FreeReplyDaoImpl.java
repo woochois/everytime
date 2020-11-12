@@ -6,35 +6,32 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import www.everytime.com.board.freeboard.model.FreeBoard;
 import www.everytime.com.reply.freereply.model.FreeReply;
 
 @Repository
 public class FreeReplyDaoImpl implements FreeReplyDao{
-
 	@Autowired
 	private SqlSessionTemplate sst;
 	
-	@Override
 	public List<FreeReply> list(FreeReply freereply) {
 		return sst.selectList("freereplyns.list", freereply);
 	}
 
-	@Override
-	public void insert(FreeReply fr) {
-		sst.insert("freereplyns.insert", fr);
-		
+	public void insert(FreeReply freereply) {
+		sst.insert("freereplyns.insert", freereply);
 	}
 
-	@Override
-	public void delete(FreeReply fr) {
-		sst.delete("freereplyns.delete", fr);
-		
+	public int delete(int frrno) {
+		return sst.update("freereplyns.delete",frrno );
 	}
 
-	@Override
-	public void update(FreeReply fr) {
-		sst.update("freereplyns.update", fr);
-		
+	public void update(FreeReply freereply) {
+		sst.update("freereplyns.update", freereply);
+	}
+
+	public int select(int fbno) {
+		return sst.selectOne("freereplyns.select", fbno);
 	}
 
 }

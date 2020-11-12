@@ -2,20 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="freereplyns">
+<resultMap type="freereply" id="freereplyResult">
+	<result property="frrno" column="frrno"/>
+	<result property="frbno" column="frbno"/>
+	<result property="frnickname" column="frnickname"/>
+	<result property="frcontents" column="frcontents"/>
+	<result property="frregdate" column="frregdate"/>
+	<result property="frrecommendation" column="frrecommendation"/>
+	<result property="frdel" column="frdel"/>
+</resultMap>
 
-<select id="list" parameterType="integer" resultType="FreeReply">
+<select id="list" parameterType="FreeReply" resultType="FreeReply">
 	select * from freereply where frbno=#{frbno} and frdel=false order by frrno
 </select>
 
 <insert id="insert" parameterType="FreeReply">
-	insert into freereply (frbno, frnickname, frcontents) values (#{frbno}, #{frnickname}, #{frcontents})
+	insert into freereply ( frbno, frnickname, frcontents ) values (#{frbno}, #{frnickname}, #{frcontents})
 </insert>
 
 <update id="delete" parameterType="integer">
-	update freereply set frdel=true where frrno=#{frrno}
+	update freereply set frdel=true where frrno=#{frrno} 
 </update>
 
 <update id="update" parameterType="FreeReply">
-	update freereply set frcontents=#{frcontents}, frregdate=current_timestamp where frrno=#{frrno}
+	update freereply set set frcontents=#{frcontents}, fregdate=current_timestamp where frrno=#{frrno}
 </update>
+
+<select id="select" parameterType="FreeReply" resultType="integer">
+	select count(*) from freereply, freeboard where frbno=#{frbno} and frdel=false
+</select>
+
 </mapper>

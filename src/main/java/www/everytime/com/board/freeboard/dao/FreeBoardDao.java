@@ -14,7 +14,7 @@ public interface FreeBoardDao {
 
 	int insert(FreeBoard freeboard);
 
-	Object updateReadCount(int fbno);
+	int updateReadCount(int fbno);
 
 	int update(FreeBoard freeboard);
 

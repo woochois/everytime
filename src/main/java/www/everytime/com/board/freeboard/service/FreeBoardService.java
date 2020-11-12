@@ -3,7 +3,6 @@ package www.everytime.com.board.freeboard.service;
 import java.util.List;
 
 import www.everytime.com.board.freeboard.model.FreeBoard;
-import www.everytime.com.reply.freereply.model.FreeReply;
 
 public interface FreeBoardService {
 
@@ -19,6 +18,6 @@ public interface FreeBoardService {
 
 	int update(FreeBoard freeboard);
 
-	int delete(int bno);
+	int delete(int fbno);
 
 }

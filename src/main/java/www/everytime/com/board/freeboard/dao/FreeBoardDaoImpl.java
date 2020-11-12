@@ -30,7 +30,7 @@ public class FreeBoardDaoImpl implements FreeBoardDao{
 		return sst.insert("freeboardns.insert", freeboard);
 	}
 
-	public Object updateReadCount(int fbno) {
+	public int updateReadCount(int fbno) {
 		return sst.update("freeboardns.updateReadCount", fbno);
 	}
 

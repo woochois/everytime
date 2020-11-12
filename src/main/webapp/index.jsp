@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	location.href="main";
 	//location.href="loginForm";
-	//location.href="insertFreeBoard";
+	//location.href="freeReplyList";
 </script>
 </body>
 </html>
