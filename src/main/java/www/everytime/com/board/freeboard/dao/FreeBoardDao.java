@@ -3,6 +3,8 @@ package www.everytime.com.board.freeboard.dao;
 import java.util.List;
 
 import www.everytime.com.board.freeboard.model.FreeBoard;
+import www.everytime.com.board.freeboard.model.FreeBoardReadCount;
+import www.everytime.com.board.freeboard.model.FreeBoardRec;
 
 public interface FreeBoardDao {
 
@@ -14,12 +16,19 @@ public interface FreeBoardDao {
 
 	int insert(FreeBoard freeboard);
 
-	int updateReadCount(int fbno);
 
 	int update(FreeBoard freeboard);
 
 	int delete(int fbno);
 
+	int recInsert(FreeBoardRec freeboardrec) ;
 	
+	int recDelete(FreeBoardRec freeboardrec);
+	
+	FreeBoardRec recSelect(FreeBoardRec freeboardrec);
+	
+	int readCountInsert(FreeBoardReadCount freeboardreadcount);
+	
+	FreeBoardReadCount readCountSelect(FreeBoardReadCount freeboardreadcount);
 
 }

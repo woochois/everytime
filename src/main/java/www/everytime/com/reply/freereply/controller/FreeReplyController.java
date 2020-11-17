@@ -15,6 +15,7 @@ import www.everytime.com.board.freeboard.service.FreeBoardService;
 import www.everytime.com.member.model.Member;
 import www.everytime.com.member.service.MemberService;
 import www.everytime.com.reply.freereply.model.FreeReply;
+import www.everytime.com.reply.freereply.model.FreeReplyRec;
 import www.everytime.com.reply.freereply.service.FreeReplyService;
 
 @Controller
@@ -64,6 +65,25 @@ public class FreeReplyController {
 	public String rDelete(FreeReply freereply, String pageNum) {
 		frs.delete(freereply.getFrrno());
 		return "redirect:/freeReplyList/fbno/" + freereply.getFrbno() + "/pageNum/" + pageNum;
+	}
+	@RequestMapping("/frrRec/fbno/{fbno}/pageNum/{pageNum}")
+	public String frrRec(@PathVariable int fbno,@PathVariable String pageNum,FreeReplyRec freereplyrec, HttpSession session,Model model) {
+		int result=0;
+		String id= (String)session.getAttribute("id");
+		
+		freereplyrec.setFrrcid(id);
+		if(frs.rRecSelect(freereplyrec)== null) {
+			frs.rRecInsert(freereplyrec);
+			result=1;
+		}else {
+			frs.rRecDelete(freereplyrec);
+			result=0;
+		}
+		model.addAttribute("result",result);
+		model.addAttribute("fbno",fbno);
+		model.addAttribute("pageNum",pageNum);
+		
+		 return "recommend"; 
 	}
 
 }

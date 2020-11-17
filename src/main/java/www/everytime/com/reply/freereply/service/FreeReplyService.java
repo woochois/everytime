@@ -2,8 +2,8 @@ package www.everytime.com.reply.freereply.service;
 
 import java.util.List;
 
-import www.everytime.com.board.freeboard.model.FreeBoard;
 import www.everytime.com.reply.freereply.model.FreeReply;
+import www.everytime.com.reply.freereply.model.FreeReplyRec;
 
 public interface FreeReplyService {
 
@@ -14,8 +14,11 @@ public interface FreeReplyService {
 	int delete(int frrno);
 
 	void update(FreeReply freereply);
+	
+	int rRecInsert(FreeReplyRec freereplyrec);
+	
+	int rRecDelete(FreeReplyRec freereplyrec);
+	
+	FreeReplyRec rRecSelect(FreeReplyRec freereplyrec);
 
-	int select(int fbno);
-	
-	
 }

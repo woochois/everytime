@@ -8,15 +8,20 @@
 	<result property="frnickname" column="frnickname"/>
 	<result property="frcontents" column="frcontents"/>
 	<result property="frregdate" column="frregdate"/>
-	<result property="frrecommendation" column="frrecommendation"/>
 	<result property="frdel" column="frdel"/>
 </resultMap>
+<resultMap type="freereplyrec" id="freereplyrec">
+	<result property="frrcno" column="frrcno" />
+	<result property="frrpno" column="frrpno" />
+	<result property="frrcid" column="frrcid"/>
+</resultMap>
 
-<select id="list" parameterType="FreeReply" resultType="FreeReply">
-	select * from freereply where frbno=#{frbno} and frdel=false order by frrno
+<select id="list" parameterType="freereply" resultType="freereply">
+	select *,(select count(frrcno) from freereplyrec where frrpno = frrno) as frrecommendation 
+	from freereply where frbno=#{frbno} and frdel=false order by frrno
 </select>
 
-<insert id="insert" parameterType="FreeReply">
+<insert id="insert" parameterType="freereply">
 	insert into freereply ( frbno, frnickname, frcontents ) values (#{frbno}, #{frnickname}, #{frcontents})
 </insert>
 
@@ -24,12 +29,20 @@
 	update freereply set frdel=true where frrno=#{frrno} 
 </update>
 
-<update id="update" parameterType="FreeReply">
+<update id="update" parameterType="freereply">
 	update freereply set set frcontents=#{frcontents}, fregdate=current_timestamp where frrno=#{frrno}
 </update>
 
-<select id="select" parameterType="FreeReply" resultType="integer">
-	select count(*) from freereply, freeboard where frbno=#{frbno} and frdel=false
+<insert id="rRecInsert" parameterType="freereplyrec">
+	insert into freereplyrec(frrpno,frrcid) values(#{frrpno},#{frrcid})
+</insert>
+
+<delete id= "rRecDelete" parameterType="freereplyrec">
+	delete from freereplyrec where frrpno=#{frrpno} and frrcid=#{frrcid}
+</delete>
+
+<select id="rRecSelect" parameterType="freereplyrec" resultType="freereplyrec">
+	select * from freereplyrec where frrpno=#{frrpno} and frrcid=#{frrcid}
 </select>
 
 </mapper>

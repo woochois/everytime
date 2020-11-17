@@ -62,7 +62,7 @@
 				<li><a href="#">강의평가</a></li>
 				<li><a href="#">학점계산기</a></li>
 				<li><a href="#">친구</a></li>
-				<li><a href="#">책방</a></li>
+				<li><a href="/books">책방</a></li>
 				<li><a href="#">캠퍼스픽</a></li>
 			</ul>
 		</div>

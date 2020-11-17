@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import www.everytime.com.board.freeboard.model.FreeBoard;
+import www.everytime.com.board.freeboard.model.FreeBoardReadCount;
+import www.everytime.com.board.freeboard.model.FreeBoardRec;
 import www.everytime.com.board.freeboard.service.FreeBoardService;
 import www.everytime.com.board.freeboard.service.PagingBean;
 import www.everytime.com.member.model.Member;
@@ -76,15 +78,16 @@ public class FreeBoardController {
 	}
 	// 게시글 상세 내역
 	@RequestMapping("/freeBoardListView/fbno/{fbno}/pageNum/{pageNum}")
-	public String freeBoardListView(@PathVariable int fbno, @PathVariable String pageNum,FreeReply freereply, Model model,HttpSession session) {
+	public String freeBoardListView(@PathVariable int fbno, @PathVariable String pageNum,FreeReply freereply,FreeBoardReadCount freeboardreadcount, Model model,HttpSession session) {
 		String id=(String)session.getAttribute("id");
 		Member member = ms.select(id);
-		fbs.updateReadCount(fbno);
+		freeboardreadcount.setFrcid(id);
+		freeboardreadcount.setFrbno(fbno);
+		if(fbs.readCountSelect(freeboardreadcount) == null) {
+			fbs.readCountInsert(freeboardreadcount);
+		}
 		FreeBoard freeboard = fbs.select(fbno);
-		
-		int frrno = frs.select(fbno);
-		model.addAttribute("frrno", frrno);
-		
+
 		model.addAttribute("member", member);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pageNum", pageNum);
@@ -119,5 +122,27 @@ public class FreeBoardController {
 		return "freeBoardDelete";
 	}
 	
+	@RequestMapping("/frRec/fbno/{fbno}/pageNum/{pageNum}")
+	public String frRec(@PathVariable int fbno,@PathVariable String pageNum, FreeBoardRec freeboardrec,HttpSession session ,Model model) {
+		int result=0;
+		String id=(String)session.getAttribute("id");
+		model.addAttribute("pageNum",pageNum);
+		freeboardrec.setFrecid(id);
+		
+		if(fbs.recSelect(freeboardrec)== null) {
+			fbs.recInsert(freeboardrec);
+			result=1;
+		}else{
+			fbs.recDelete(freeboardrec);
+			result=0;
+		}
+		
+		model.addAttribute("result", result);
+		model.addAttribute("fbno",fbno);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "recommend";
+		
+	}
 	
 }

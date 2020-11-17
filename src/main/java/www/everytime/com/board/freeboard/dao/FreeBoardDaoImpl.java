@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import www.everytime.com.board.freeboard.model.FreeBoard;
+import www.everytime.com.board.freeboard.model.FreeBoardReadCount;
+import www.everytime.com.board.freeboard.model.FreeBoardRec;
 
 @Repository
-public class FreeBoardDaoImpl implements FreeBoardDao{
-	
+public class FreeBoardDaoImpl implements FreeBoardDao {
+
 	@Autowired
 	private SqlSessionTemplate sst;
 
@@ -30,16 +32,30 @@ public class FreeBoardDaoImpl implements FreeBoardDao{
 		return sst.insert("freeboardns.insert", freeboard);
 	}
 
-	public int updateReadCount(int fbno) {
-		return sst.update("freeboardns.updateReadCount", fbno);
-	}
-
 	public int update(FreeBoard freeboard) {
 		return sst.update("freeboardns.update", freeboard);
 	}
 
 	public int delete(int fbno) {
 		return sst.update("freeboardns.delete", fbno);
+	}
+
+	public int recInsert(FreeBoardRec freeboardrec) {
+		return sst.insert("freeboardns.recInsert", freeboardrec);
+	}
+
+	public int recDelete(FreeBoardRec freeboardrec) {
+		return sst.delete("freeboardns.recDelete",freeboardrec);
+	}
+	public FreeBoardRec recSelect(FreeBoardRec freeboardrec) {
+		return sst.selectOne("freeboardns.recSelect", freeboardrec);
+	}
+	
+	public int readCountInsert(FreeBoardReadCount freeboardreadcount) {
+		return sst.insert("freeboardns.readCountInsert", freeboardreadcount);
+	}
+	public FreeBoardReadCount readCountSelect(FreeBoardReadCount freeboardreadcount) {
+		return sst.selectOne("freeboardns.readCountSelect",freeboardreadcount);
 	}
 
 }

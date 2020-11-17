@@ -27,5 +27,6 @@ public class MemberDaoImpl implements MemberDao{
 	public int delete(String id) {
 		return sst.update("memberns.delete", id);
 	}
+	
 
 }

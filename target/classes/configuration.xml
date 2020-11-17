@@ -7,6 +7,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Member" type="www.everytime.com.member.model.Member"/>
 		<typeAlias alias="FreeBoard" type="www.everytime.com.board.freeboard.model.FreeBoard"/>
 		<typeAlias alias="FreeReply" type="www.everytime.com.reply.freereply.model.FreeReply"/>
+		<typeAlias alias="FreeBoardRec" type="www.everytime.com.board.freeboard.model.FreeBoardRec"/>
+		<typeAlias alias="FreeBoardReadCount" type="www.everytime.com.board.freeboard.model.FreeBoardReadCount"></typeAlias>
+		<typeAlias alias="FreeReplyRec" type="www.everytime.com.reply.freereply.model.FreeReplyRec" />
 	</typeAliases>
 	<mappers>
 		<mapper	resource="www/everytime/com/mapper/member.xml" />

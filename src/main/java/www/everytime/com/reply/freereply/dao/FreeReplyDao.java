@@ -2,8 +2,8 @@ package www.everytime.com.reply.freereply.dao;
 
 import java.util.List;
 
-import www.everytime.com.board.freeboard.model.FreeBoard;
 import www.everytime.com.reply.freereply.model.FreeReply;
+import www.everytime.com.reply.freereply.model.FreeReplyRec;
 
 public interface FreeReplyDao {
 
@@ -14,7 +14,11 @@ public interface FreeReplyDao {
 	int delete(int frrno);
 
 	void update(FreeReply freereply);
-
-	int select(int fbno);
+	
+	int rRecInsert(FreeReplyRec freereplyrec);
+	
+	int rRecDelete(FreeReplyRec freereplyrec);
+	
+	FreeReplyRec rRecSelect(FreeReplyRec freereplyrec);
 
 }

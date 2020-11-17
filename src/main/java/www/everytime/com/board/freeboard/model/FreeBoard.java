@@ -13,11 +13,9 @@ public class FreeBoard {
     private String fcontents;
     private int freadcount;
     private Date fregdate;
-    private int frecommendation;
     private boolean fdel;
-    
-    //댓글 갯수용
     private int commentCount;
+    private int frecommendation;
     
 	//페이징용
 	private int startRow;

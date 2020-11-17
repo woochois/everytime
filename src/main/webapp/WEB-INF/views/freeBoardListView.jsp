@@ -72,6 +72,30 @@
 		});
 	});
 </script>
+<style>
+#recbutton {
+	background: url( "/resources/images/recommend.png" ) no-repeat;
+	border: none;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	
+
+
+#recform{
+	display:inline-block;
+	white-space:nowrap;
+}
+
+} 
+</style>
+	<script>
+		function recFunc() {
+			alert("추천");
+			window.location.href = "/frRec";
+		};
+	</script>
+
 </head>
 <body>
 	<nav>
@@ -149,8 +173,12 @@
 				<td><pre>${freeboard.fcontents }</pre></td>
 			</tr>
 			<tr>
-				<td>댓글수 </td>
-				<td>${frrno }</td>
+				<td>댓글수</td>
+				 <td>${freeboard.commentCount }</td>
+			</tr>
+			<tr>
+				<td>추천수</td>
+				<td>${freeboard.frecommendation}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><a href="/freeBoardList" class="btn btn-info">게시글
@@ -161,7 +189,15 @@
 						<a
 							href="/freeBoardDelete/fbno/${freeboard.fbno }/pageNum/${pageNum}"
 							class="btn btn-danger" id="deleteBtn">삭제</a>
-					</c:if></td>
+					</c:if>
+					
+					
+					<form action="/frRec/fbno/${freeboard.fbno}/pageNum/${pageNum}" id="recform" >
+						<input type="hidden" name="frbno" value="${freeboard.fbno}" />
+						<button type="submit" id="recbutton"></button>
+					</form>
+					</td>
+					
 			</tr>
 		</table>
 
