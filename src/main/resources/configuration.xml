@@ -10,10 +10,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FreeBoardRec" type="www.everytime.com.board.freeboard.model.FreeBoardRec"/>
 		<typeAlias alias="FreeBoardReadCount" type="www.everytime.com.board.freeboard.model.FreeBoardReadCount"></typeAlias>
 		<typeAlias alias="FreeReplyRec" type="www.everytime.com.reply.freereply.model.FreeReplyRec" />
+		<typeAlias alias="Book" type="www.everytime.com.books.model.Book" />
 	</typeAliases>
 	<mappers>
 		<mapper	resource="www/everytime/com/mapper/member.xml" />
 		<mapper	resource="www/everytime/com/mapper/freeboard.xml" />
 		<mapper	resource="www/everytime/com/mapper/freereply.xml" />
+		<mapper	resource="www/everytime/com/mapper/book.xml" />
 	</mappers>
 </configuration>

@@ -26,7 +26,7 @@
 	src="/resources/js/assets/load-image.all.min.js"></script>
 <script type="text/javascript" src="/resources/js/assets/sell.js"></script>
 
-    <script>
+<script>
         $(function () {
 
             $(".search").click(function () {
@@ -34,27 +34,28 @@
                 $.ajax({
                     method: "GET",
                     url: "https://dapi.kakao.com/v3/search/book?target=title&size=20", // 전송 주소
-                    data: { query: $("#bookName").val() }, // 보낼 데이터
-                    headers: { Authorization: "KakaoAK 293654733c566c2df57a50fda13d9eaa" }
+                    data: {query: $("#bookName").val()},
+                    headers: { Authorization: "KakaoAK 293654733c566c2df57a50fda13d9eaa" },
                 })
-                    .done(function (msg) { // 응답이 오면 처리를 하는 코드
-                    	console.log(msg);
-                    	for(var i = 0; i < 20; i++){
-                    		$("p").append("<strong>" + msg.documents[i].isbn + "</strong>");
-                    		$("p").append("<strong>" + msg.documents[i].title + "</strong>");
-                    		$("p").append("<strong>" + msg.documents[i].authors + "</strong>");
-                    		$("p").append("<strong>" + msg.documents[i].publisher + "</strong>");
-                    		$("p").append("<strong>" + msg.documents[i].price + "</strong>");
-                    		$("p").append("<strong>" + msg.documents[i].translators + "</strong>");
-                    		
-    	                    $("p").append("<img src='" + msg.documents[i].thumbnail + "'>");
-                    	}
-                    });
-            })
-        });
+                .done(function (msg) { // 응답이 오면 처리를 하는 코드
+                    console.log(msg);
+                    for(var i = 0; i < 20; i++){                          
+                        $("p").append("<ul class='list-group'>"
+                        + "<li class='list-group-item'>ISBN : " + msg.documents[i].isbn + "</li>"
+                        + "<li class='list-group-item'>책 이름 : " + msg.documents[i].title + "</li>"
+                        + "<li class='list-group-item'>저자 : " + msg.documents[i].authors + "</li>"
+                        + "<li class='list-group-item'>출판사 : " + msg.documents[i].publisher + "</li>"
+                        + "<li class='list-group-item'>가격 : " + msg.documents[i].price + "</li>"
+                        + "<li class='list-group-item'>옮긴이 : " + msg.documents[i].translators + "</li>"
+                        + "<li class='list-group-item'> 출판일 : " + msg.documents[i].datetime + "</li>"
+                        + "<li class='list-group-item'><a href='/bookSellForm' ><img src='" + msg.documents[i].thumbnail + "' width='100%' height='300'></a></li>"
+                      + "</ul>");
+                    }
+                 });
+         })
+     });
 
-    </script>
-
+ </script>
 </head>
 <body>
 	<header>
@@ -62,25 +63,12 @@
 			<a href="/" class="logo"><img
 				src="/resources/images/assets/logo.png" alt="에브리타임 책방"></a>
 		</div>
-
-
 	</header>
 	<form id="sell">
 		<h1>판매하기</h1>
-		<p></p>
-		<div class="group-result">
-			<ol>
-				<li>
-					<dl>
-						<dt></dt>
-					</dl>
-				</li>
-			</ol>
-		</div>
-		
 	</form>
-		
-		
+
+
 	<div id="bar">
 		<nav>
 			<a href="/" class="home"><span class="icons home-darkgray-16"></span><span
@@ -107,6 +95,40 @@
 		ga('create', 'UA-82918907-1', 'auto');
 		ga('send', 'pageview');
 	</script>
+	
+	<center>
+        <form action="bookList.do">
+            <input type="text" name="keyword" >
+            <input type="submit" value="검색">
+        </form>
+        
+    </center>
+    <table>
+        <tr>
+            <td colspan="7" width="100%" bgcolor="pink"></td>
+        </tr>
+        <c:forEach items="${bookList}" var ="b">
+            <tr>
+                <td rowspan="2"><img src="${b.image}"></td>
+                <td rowspan="4" width="800">"${b.title}"</td>
+                <td width="200">${b.author}</td>
+            </tr>
+            <tr>
+                <td width="200">${b.price }</td>
+                <td width="200">${b.discount }</td>
+                <td width="200">${b.publisher }</td>
+                <td width="200">${b.pubdate }</td>
+                <td width="200">${b.isbn }</td>
+            </tr>
+            <tr>
+                <td colspan="7">${b.description}</td>
+            </tr>
+            <tr>
+                <td colspan="7" width="100%" bgcolor="pink"></td>
+            </tr>
+        </c:forEach>
+    </table>
+
 </body>
 </html>
 

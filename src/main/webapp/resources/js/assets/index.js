@@ -3,7 +3,7 @@ bookstore.index = {
   loadedLength: 0,
   parseParams: function (url) {
     var urlParams = bookstore.fn.parseUrlParams(url);
-    var keyword = urlParams.keyword ? urlParams.keyword.trim() : '';
+    var keyword = urlParams.keyword ? urlParams.keyword.trim() : '';w
     var campus = !isNaN(Number(urlParams.campus)) ? Number(urlParams.campus) : 0;
     return {
       keyword: keyword,
