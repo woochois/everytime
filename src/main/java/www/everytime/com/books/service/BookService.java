@@ -4,9 +4,12 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import www.everytime.com.books.model.Book;
+
 @Service
 public interface BookService {
 
-	void insert(Map<String, Object> param);
+	void insert(Book book);
+
 
 }
