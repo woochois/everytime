@@ -1,7 +1,10 @@
 package www.everytime.com.books.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import www.everytime.com.books.model.Book;
@@ -15,7 +18,11 @@ public class BooksController {
 	private BookService bs;
 	
 	@RequestMapping("/books")
-	public String books() {
+	public String books(Book book, Model model) {
+
+		List<Book> booklist = bs.selectList(book);
+
+		model.addAttribute("booklist", booklist);
 		return "books";
 	}
 
@@ -27,6 +34,6 @@ public class BooksController {
 	@RequestMapping("/bookSellForm")
 	public String bookSellForm(Book book) {
 		bs.insert(book);
-		return "bookSellForm";
+		return "books";
 	}	
 }

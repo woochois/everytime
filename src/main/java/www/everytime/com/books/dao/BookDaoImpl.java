@@ -1,6 +1,6 @@
 package www.everytime.com.books.dao;
 
-import java.util.Map;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,11 @@ public class BookDaoImpl implements BookDao{
 	@Override
 	public void insert(Book book) {
 		sst.insert("bookns.insert", book);
-		
+	}
+
+	@Override
+	public List<Book> selectList(Book book) {
+		return sst.selectList("bookns.selectList", book);
 	}
 
 	
