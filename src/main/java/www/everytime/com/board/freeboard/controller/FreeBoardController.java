@@ -126,7 +126,6 @@ public class FreeBoardController {
 	public String frRec(@PathVariable int fbno,@PathVariable String pageNum, FreeBoardRec freeboardrec,HttpSession session ,Model model) {
 		int result=0;
 		String id=(String)session.getAttribute("id");
-		model.addAttribute("pageNum",pageNum);
 		freeboardrec.setFrecid(id);
 		
 		if(fbs.recSelect(freeboardrec)== null) {

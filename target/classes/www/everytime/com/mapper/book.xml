@@ -3,10 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookns">
 	<insert id="insert" parameterType="book">
-		insert into booklist values (#{isbn}, #{title}, #{authors}, #{publisher}, #{price}, #{translators}, #{datetime}, #{thumbnail})
-	</insert>
+      	insert into booklist (isbn, title, authors, publisher, price, translators, datetime, thumbnail)
+       	values (#{isbn}, #{title}, #{authors}, #{publisher}, #{price}, #{translators}, #{datetime}, #{thumbnail})
+   </insert>
 	
 	<select id="selectList" parameterType="book" resultType="book">
-		select * from booklist where title=%#{title}%
+		select title, authors, publisher, price, translators from booklist where isbn=#{isbn} and limit 0, 1
 	</select>
 </mapper>

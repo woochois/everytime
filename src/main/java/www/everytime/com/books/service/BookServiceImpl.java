@@ -23,5 +23,5 @@ public class BookServiceImpl implements BookService{
 	public List<Book> selectList(Book book) {
 		return bd.selectList(book);
 	}
-	
+
 }

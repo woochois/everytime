@@ -10,5 +10,4 @@ public interface BookDao {
 
 	List<Book> selectList(Book book);
 
-
 }

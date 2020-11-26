@@ -23,6 +23,5 @@ public class BookDaoImpl implements BookDao{
 	public List<Book> selectList(Book book) {
 		return sst.selectList("bookns.selectList", book);
 	}
-
 	
 }
