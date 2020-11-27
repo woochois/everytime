@@ -10,12 +10,13 @@ public class FreeBoard {
 	private int fbno;
     private String fnickname;
     private String ftitle;
-    private String fcontents;
-    private int freadcount;
+    private String fcontents;	
     private Date fregdate;
     private boolean fdel;
-    private int commentCount;
+    
+    private int freadcount;
     private int frecommendation;
+    private int fcommentCount;
     
 	//페이징용
 	private int startRow;

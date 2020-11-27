@@ -83,7 +83,7 @@ public class FreeReplyController {
 		model.addAttribute("fbno",fbno);
 		model.addAttribute("pageNum",pageNum);
 		
-		 return "recommend"; 
+		 return "freeBoardRecommend"; 
 	}
 
 }

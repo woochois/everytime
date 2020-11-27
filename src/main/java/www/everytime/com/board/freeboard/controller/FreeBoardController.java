@@ -18,7 +18,6 @@ import www.everytime.com.board.freeboard.service.PagingBean;
 import www.everytime.com.member.model.Member;
 import www.everytime.com.member.service.MemberService;
 import www.everytime.com.reply.freereply.model.FreeReply;
-import www.everytime.com.reply.freereply.service.FreeReplyService;
 
 @Controller
 public class FreeBoardController {
@@ -27,8 +26,7 @@ public class FreeBoardController {
 	private FreeBoardService fbs;
 	@Autowired
 	private MemberService ms;
-	@Autowired
-	private FreeReplyService frs;
+	
 	
 	@RequestMapping("/freeBoardList")
 	public String init() {		
@@ -122,10 +120,12 @@ public class FreeBoardController {
 		return "freeBoardDelete";
 	}
 	
+	// 게시글 추천
 	@RequestMapping("/frRec/fbno/{fbno}/pageNum/{pageNum}")
 	public String frRec(@PathVariable int fbno,@PathVariable String pageNum, FreeBoardRec freeboardrec,HttpSession session ,Model model) {
 		int result=0;
 		String id=(String)session.getAttribute("id");
+		
 		freeboardrec.setFrecid(id);
 		
 		if(fbs.recSelect(freeboardrec)== null) {
@@ -140,7 +140,7 @@ public class FreeBoardController {
 		model.addAttribute("fbno",fbno);
 		model.addAttribute("pageNum", pageNum);
 		
-		return "recommend";
+		return "freeBoardRecommend";
 		
 	}
 	

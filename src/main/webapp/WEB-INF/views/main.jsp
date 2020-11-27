@@ -74,7 +74,7 @@
 				<li><a href="#" data-id="260228" class="new">비밀게시판</a></li>
 				<li><a href="#" data-id="412760">새내기게시판</a></li>
 				<li><a href="#" data-id="260230">정보게시판</a></li>
-				<li><a href="#" data-id="367769">홍보게시판</a></li>
+				<li><a href="/promotionBoardList" data-id="367769">홍보게시판</a></li>
 				<li><a href="#" data-id="419094">동아리·학회</a></li>
 				<li><a href="#" class="search">게시판 찾기</a></li>
 			</ul>

@@ -29,10 +29,10 @@
 	update freereply set frdel=true where frrno=#{frrno} 
 </update>
 
-<update id="update" parameterType="freereply">
+<!-- <update id="update" parameterType="freereply">
 	update freereply set set frcontents=#{frcontents}, fregdate=current_timestamp where frrno=#{frrno}
 </update>
-
+ -->
 <insert id="rRecInsert" parameterType="freereplyrec">
 	insert into freereplyrec(frrpno,frrcid) values(#{frrpno},#{frrcid})
 </insert>

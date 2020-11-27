@@ -50,7 +50,7 @@
 </head>
 <body>
 	<div class="container">
-		<%-- <c:if test="${not empty frList }"> --%>
+		<c:if test="${not empty frList }">
 		<h3>댓글 목록</h3>
 		<table class="table table-striped table-hover">
 			<thead>
@@ -86,18 +86,18 @@
 						<td>
 							<!-- 댓글 작성자와 로그인 회원의 닉네임이 같으면 --> <c:if
 								test="${freereply.frnickname==member.nickname}">
-								<%-- <a href="/freeReplyDelete/frbno/${freereply.frbno }/frrno/${freereply.frrno }/pageNum/${pageNum}"
-										class="btn btn-danger" id="">삭제</a> --%>
-								<input type="button" class="btn btn-danger btn-sm"
+								<a href="/freeReplyDelete/frbno/${freereply.frbno }/frrno/${freereply.frrno }/pageNum/${pageNum}"
+										class="btn btn-danger" id="">삭제</a>
+								<%-- <input type="button" class="btn btn-danger btn-sm"
 									onclick="frDelete(${freereply.frbno},${freereply.frrno})"
-									value="삭제">
+									value="삭제"> --%>
 							</c:if>
 						</td>
 					</tr>
 				</c:if>
 			</c:forEach>
 		</table>
-		<%-- </c:if> --%>
+		</c:if>
 
 	</div>
 </body>

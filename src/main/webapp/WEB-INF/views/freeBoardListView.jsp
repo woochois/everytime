@@ -59,7 +59,7 @@
 				'/freeReplyList/fbno/${freeboard.fbno}/pageNum/${pageNum}');
 		
 		$('#deleteBtn').click(function() {
-			alert("삭제하시겠습니까?");
+			alert("삭제하시겠습니까?");			
 		});
 		
 		$('#frInsert').click(function() {
@@ -67,6 +67,7 @@
 			$.post('/frInsert', sendData, function(data) {
 				alert('댓글이 작성 되었습니다');
 				$('#freeReplyListDisp').html(data);
+				
 				frm.frcontents.value = "";
 			});
 		});
@@ -81,13 +82,13 @@
 	cursor: pointer;
 	
 
-
+}
 #recform{
 	display:inline-block;
 	white-space:nowrap;
 }
 
-} 
+
 </style>
 	<script>
 		function recFunc() {
@@ -174,7 +175,7 @@
 			</tr>
 			<tr>
 				<td>댓글수</td>
-				 <td>${freeboard.commentCount }</td>
+				 <td>${freeboard.fcommentCount }</td>
 			</tr>
 			<tr>
 				<td>추천수</td>

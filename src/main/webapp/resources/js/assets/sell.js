@@ -48,7 +48,7 @@ bookstore.sell = {
       placeholder: 'ISBN 혹은 책 이름'
     }).appendTo($keywordWrap);
     var $buttonWrap = $("<span></span>").addClass('search').appendTo($keywordWrap);
-    $('<span></span>').addClass('icons search-gray-16').appendTo($buttonWrap);
+    $('<span></span>').addClass('fa fa-search').appendTo($buttonWrap);
     $('<hr>').appendTo($container);
     $container.appendTo($sellForm);
   },
@@ -163,6 +163,8 @@ bookstore.sell = {
     bookstore.sell.validateBookDiv($container);
     $nextButton.click();
   },
+  
+  
   validateBookDiv: function ($bookDiv) {
     if ($bookDiv.find('input[name="book-title"]').val().trim() !== ''
       && $bookDiv.find('input[name="book-author"]').val().trim() !== ''
@@ -172,9 +174,13 @@ bookstore.sell = {
       $bookDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockBookDiv: function ($sellForm) {
     $sellForm.find('div.group-book input.text').attr('readonly', true);
   },
+  
+  
   showLectureDiv: function ($sellForm) {
     bookstore.sell.lockBookDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-lecture');
@@ -201,6 +207,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   showLecturePopup: function ($sellForm) {
     $sellForm.find('div.popup').hide().remove();
     var $container = $('<div></div>').addClass('popup popup-lecture');
@@ -217,6 +225,8 @@ bookstore.sell = {
     $container.show();
     $textfield.focus();
   },
+  
+  
   showLectureResultDiv: function ($sellForm, keyword) {
     $sellForm.find('div.popup').hide().remove();
     $sellForm.find('div.group-lecture-result').remove();
@@ -259,6 +269,8 @@ bookstore.sell = {
       bookstore.sell.scrollToDiv($sellForm, $container);
     });
   },
+  
+  
   putLectureData: function ($sellForm, data) {
     var $lectureInput = $sellForm.find('> div.group-lecture input[name="lecture"]');
     $lectureInput.val(data.value).data({
@@ -275,10 +287,14 @@ bookstore.sell = {
       $lectureDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockLectureDiv: function ($sellForm) {
     $sellForm.find('div.group-lecture input.text').attr('readonly', true);
     $sellForm.find('div.group-lecture-result').remove();
   },
+  
+  
   showStatusNoteDiv: function ($sellForm) {
     bookstore.sell.lockLectureDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-status group-status-note');
@@ -303,9 +319,13 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   lockStatusNoteDiv: function ($sellForm) {
     $sellForm.find('div.group-status-note ol.select-checkbox').addClass('locked');
   },
+  
+  
   showStatusDamageDiv: function ($sellForm) {
     bookstore.sell.lockStatusNoteDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-status group-status-damage');
@@ -330,9 +350,13 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   lockStatusDamageDiv: function ($sellForm) {
     $sellForm.find('div.group-status-damage ol.select-checkbox').addClass('locked');
   },
+  
+  
   validateStatusDiv: function ($statusDiv) {
     setTimeout(function () {
       var $checkedItems = $statusDiv.find('> ol.select-checkbox > li.checked');
@@ -343,6 +367,8 @@ bookstore.sell = {
       }
     }, 1);
   },
+  
+  
   showStatusImageDiv: function ($sellForm) {
     bookstore.sell.lockStatusDamageDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-status group-status-image');
@@ -372,6 +398,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   validateStatusImageDiv: function ($statusImageDiv) {
     if ($statusImageDiv.find('> div.images').is(':has(div.image.attached)')) {
       $statusImageDiv.find('input.button.next').removeClass('disabled');
@@ -379,6 +407,8 @@ bookstore.sell = {
       $statusImageDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockStatusImageDiv: function ($sellForm) {
     var $images = $sellForm.find('div.group-status-image div.images');
     if ($images.length) {
@@ -386,6 +416,8 @@ bookstore.sell = {
       $images.find('span.remove').remove();
     }
   },
+  
+  
   showPriceDiv: function ($sellForm) {
     bookstore.sell.lockStatusImageDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-price');
@@ -407,6 +439,8 @@ bookstore.sell = {
     $priceInput.focus();
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   validatePriceDiv: function ($priceDiv) {
     var price = Number($priceDiv.find('input[name="price"]').val());
     if (!isNaN(price) && price > 0) {
@@ -415,9 +449,13 @@ bookstore.sell = {
       $priceDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockPriceDiv: function ($sellForm) {
     $sellForm.find('div.group-price input.text').attr('readonly', true);
   },
+  
+  
   showContactDiv: function ($sellForm) {
     bookstore.sell.lockPriceDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-contact');
@@ -435,9 +473,13 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   lockContactDiv: function ($sellForm) {
     $sellForm.find('div.group-contact ol.select-checkbox').addClass('locked');
   },
+  
+  
   showMeansDiv: function ($sellForm) {
     bookstore.sell.lockContactDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-means');
@@ -458,6 +500,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   validateMeansDiv: function ($meansDiv) {
     setTimeout(function () {
       var $checkedItems = $meansDiv.find('> ol.select-checkbox > li.checked');
@@ -468,9 +512,13 @@ bookstore.sell = {
       }
     }, 1);
   },
+  
+  
   lockMeansDiv: function ($sellForm) {
     $sellForm.find('div.group-means ol.select-checkbox').addClass('locked');
   },
+  
+  
   showMeansDirectDiv: function ($sellForm) {
     bookstore.sell.lockMeansDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-means-direct');
@@ -492,6 +540,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   validateMeansDirectDiv: function ($meansDirectDiv) {
     if ($meansDirectDiv.find('input[name="means-direct"]').val().trim() !== '') {
       $meansDirectDiv.find('input.button.next').removeClass('disabled');
@@ -499,9 +549,13 @@ bookstore.sell = {
       $meansDirectDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockMeansDirectDiv: function ($sellForm) {
     $sellForm.find('div.group-means-direct input.text').attr('readonly', true);
   },
+  
+  
   showMeansDirectPopup: function ($sellForm) {
     $sellForm.find('div.popup').hide().remove();
     var $container = $('<div></div>').addClass('popup popup-means-direct');
@@ -513,6 +567,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     $container.show();
   },
+  
+  
   putMeansDirectCampusData: function ($sellForm) {
     bookstore.sell.putMeansDirectData($sellForm, {
       name: bookstore.data.user.campus_full_name,
@@ -520,6 +576,8 @@ bookstore.sell = {
       longitude: bookstore.data.user.campus_longitude
     });
   },
+  
+  
   putMeansDirectCurrentData: function ($sellForm) {
     $('<div></div>').html('<p>현재 위치를 불러오는 중입니다...</p>').addClass('toast').appendTo($sellForm);
     bookstore.fn.findCurrentLocation(function (err, result) {
@@ -535,6 +593,8 @@ bookstore.sell = {
       });
     });
   },
+  
+  
   putMeansDirectData: function ($sellForm, data) {
     var $meansDirectInput = $sellForm.find('div.group-means-direct input[name="means-direct"]');
     $meansDirectInput.val(data.name).data({
@@ -546,6 +606,8 @@ bookstore.sell = {
     $sellForm.find('div.popup').hide().remove();
     $sellForm.find('div.group-means-direct-search-result').remove();
   },
+  
+  
   showMeansDirectSearchPopup: function ($sellForm) {
     $sellForm.find('div.popup').hide().remove();
     var $container = $('<div></div>').addClass('popup popup-means-direct-search');
@@ -562,6 +624,8 @@ bookstore.sell = {
     $container.show();
     $textfield.focus();
   },
+  
+  
   showMeansDirectSearchResultDiv: function ($sellForm, keyword) {
     $sellForm.find('div.popup').hide().remove();
     $sellForm.find('div.group-means-direct-search-result').remove();
@@ -584,6 +648,8 @@ bookstore.sell = {
       bookstore.sell.scrollToDiv($sellForm, $container);
     });
   },
+  
+  
   showCommentDiv: function ($sellForm) {
     bookstore.sell.lockMeansDiv($sellForm);
     bookstore.sell.lockMeansDirectDiv($sellForm);
@@ -609,6 +675,8 @@ bookstore.sell = {
     $commentTextarea.focus();
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   validateCommentDiv: function ($commentDiv) {
     if ($commentDiv.find('textarea[name="comment"]').val().trim() !== '') {
       $commentDiv.find('input.button.next').removeClass('disabled');
@@ -616,9 +684,13 @@ bookstore.sell = {
       $commentDiv.find('input.button.next').addClass('disabled');
     }
   },
+  
+  
   lockCommentDiv: function ($sellForm) {
     $sellForm.find('div.group-comment textarea').attr('readonly', true);
   },
+  
+  
   showAgreementDiv: function ($sellForm) {
     bookstore.sell.lockCommentDiv($sellForm);
     var $container = $('<div></div>').addClass('group group-agreement');
@@ -638,6 +710,8 @@ bookstore.sell = {
     $container.appendTo($sellForm);
     bookstore.sell.scrollToDiv($sellForm, $container);
   },
+  
+  
   submit: function ($sellForm) {
     if (bookstore.sell.saving === true) {
       return false;

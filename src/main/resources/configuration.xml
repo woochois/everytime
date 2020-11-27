@@ -11,11 +11,23 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FreeBoardReadCount" type="www.everytime.com.board.freeboard.model.FreeBoardReadCount"></typeAlias>
 		<typeAlias alias="FreeReplyRec" type="www.everytime.com.reply.freereply.model.FreeReplyRec" />
 		<typeAlias alias="Book" type="www.everytime.com.books.model.Book" />
+		
+		<typeAlias alias="MessageVO" type="www.everytime.com.message.model.MessageVO" />
+		<typeAlias alias="UserVO" type="www.everytime.com.message.model.UserVO" />
+		
+		<typeAlias alias="PromotionBoard" type="www.everytime.com.board.promotionboard.model.PromotionBoard"/>
+		<typeAlias alias="PromotionReply" type="www.everytime.com.reply.promotionreply.model.PromotionReply"/>
+		<typeAlias alias="PromotionBoardRec" type="www.everytime.com.board.promotionboard.model.PromotionBoardRec"/>
+		<typeAlias alias="PromotionBoardReadCount" type="www.everytime.com.board.promotionboard.model.PromotionBoardReadCount"></typeAlias>
+		<typeAlias alias="PromotionReplyRec" type="www.everytime.com.reply.promotionreply.model.PromotionReplyRec" />
 	</typeAliases>
 	<mappers>
 		<mapper	resource="www/everytime/com/mapper/member.xml" />
 		<mapper	resource="www/everytime/com/mapper/freeboard.xml" />
 		<mapper	resource="www/everytime/com/mapper/freereply.xml" />
 		<mapper	resource="www/everytime/com/mapper/book.xml" />
+		<mapper	resource="www/everytime/com/mapper/message.xml" />
+		<mapper	resource="www/everytime/com/mapper/promotionboard.xml" />
+		<mapper	resource="www/everytime/com/mapper/promotionreply.xml" />
 	</mappers>
 </configuration>

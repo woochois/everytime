@@ -7,8 +7,7 @@
 		<result property="fnickname" column="fnickname" />
 		<result property="ftitle" column="ftitle" />
 		<result property="fcontents" column="fcontents" />
-		<result property="fregdate" column="fregdate" />
-		<result property="freconmendation" column="freconmendation" />
+		<result property="fregdate" column="fregdate" />		
 		<result property="fdel" column="fdel" />
 	</resultMap>
 	<resultMap type="freeboardrec" id="freeboardrecResult">
@@ -26,7 +25,7 @@
 		resultType="freeboard">
 		select freeboard.*,
 		(select count(frrno) from freereply where frbno=fbno and frdel=false) as
-		commentCount,
+		fcommentCount,
 		(select count(fbrno) from freeboardrec where frbno=fbno) 
 		as frecommendation,
 		(select count(fbrcno) from freeboardreadcount where frbno=fbno)
