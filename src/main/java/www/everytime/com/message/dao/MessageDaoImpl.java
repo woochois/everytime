@@ -19,15 +19,14 @@ public class MessageDaoImpl implements MessageDao{
 		return sst.insert("messagens.insert",message);
 	}
 
-	public List<Message> sendlist(Message message) {
-		
-		return sst.selectList("messagens.sendlist",message);
-	}
-
-
 	public List<Message> reclist(Message message) {
 		
 		return sst.selectList("messagens.reclist",message);
+	}
+	
+	public List<Message> sendlist(Message message) {
+		
+		return sst.selectList("messagens.sendlist",message);
 	}
 
 

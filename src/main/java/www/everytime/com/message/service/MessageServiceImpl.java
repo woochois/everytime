@@ -21,16 +21,16 @@ public class MessageServiceImpl implements MessageService{
 	}
 
 
+	public List<Message> reclist(Message message) {
+		
+		return msgd.reclist(message);
+	}
+	
 	public List<Message> sendlist(Message message) {
 		
 		return msgd.sendlist(message);
 	}
 
-
-	public List<Message> reclist(Message message) {
-		
-		return msgd.reclist(message);
-	}
 
 	public int getTotal(Message message) {
 		
@@ -54,7 +54,6 @@ public class MessageServiceImpl implements MessageService{
 		
 		return msgd.delete2(m_num);
 	}
-
 
 	
 }

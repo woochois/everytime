@@ -8,9 +8,9 @@ public interface MessageDao {
 
 	int insert(Message message);
 
-	List<Message> sendlist(Message message);
-
 	List<Message> reclist(Message message);
+	
+	List<Message> sendlist(Message message);
 
 	int getTotal(Message message);
 
@@ -19,6 +19,7 @@ public interface MessageDao {
 	int delete(int m_num);
 
 	int delete2(int m_num);
+
 
 	
 

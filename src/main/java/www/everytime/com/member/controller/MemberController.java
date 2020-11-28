@@ -26,7 +26,7 @@ public class MemberController {
 		} else if (mem.getPassword().equals(member.getPassword())) {
 			result =1; // 성공
 			session.setAttribute("id", member.getId());
-			
+			session.setAttribute("nickname", member.getNickname());
 		}
 	
 		model.addAttribute("result", result);

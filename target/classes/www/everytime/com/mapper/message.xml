@@ -3,32 +3,35 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="messagens">
+	<resultMap type="message" id="msgResult">
+		<result property="m_num" column= "m_num" />
+		<result property = "m_sender_nick" column = "m_sender_nick" />
+		<result property = "m_sender_del" column = "m_sender_del" />
+		<result property = "m_receiver_nick" column = "m_receiver_nick" />
+		<result property = "m_receiver_del" column = "m_receiver_del" />
+		<result property = "m_content" column = "m_content" />
+		<result property = "m_send_date" column = "m_send_date" />
+	</resultMap>
+
 	<insert id="insert" parameterType="message">
-		insert into message (m_sender_id, m_sender_nick, m_receiver_id, m_receiver_nick, m_title, m_content) 
-		values( #{m_sender_id}, #{m_sender_nick}, (select id from member where nickname = #{m_receiver_nick}),
-			#{m_receiver_nick}, #{m_title}, #{m_content})
+		insert into message (m_sender_nick, m_receiver_nick, m_content) 
+		values( #{m_sender_nick}, #{m_receiver_nick}, #{m_content})
 	</insert>
-	
-	<select id="sendlist" parameterType="message" resultMap="msgResult">
-		select * from (select a.* from 
-							(select * from message order by m_num desc) a)
-			where m_sender_nick = #{m_sender_nick} and limit #{startRow}, #{endRow}
+
+	<select id="sendlist" parameterType="message" resultType="message">
+		select * from message where m_sender_nick = #{m_receiver_nick} and m_sender_del = false
 	</select>
 	
-	<select id="reclist" resultMap="msgResult">
-		select * from (select a.* from 
-							(select * from message order by m_num desc) a)
-			where m_receiver_nick = #{m_receiver_nick} and limit #{startRow}, #{endRow}		
+	<select id="reclist" parameterType="message" resultType="message">
+		select * from message where m_receiver_nick = #{m_receiver_nick} and m_receiver_del = false
 	</select>
 	
-	<select id="getTotal" parameterType="message"  resultType="integer">
+	<select id="getTotal" parameterType="message" resultType="integer">
 		select count(*) from message where m_sender_nick = #{m_sender_nick}
-		
 	</select>
 	
-	<select id="getTotal_r" parameterType="message"  resultType="integer">
+	<select id="getTotal_r" parameterType="message" resultType="integer">
 		select count(*) from message where m_receiver_nick = #{m_receiver_nick}
-		
 	</select>
 	
 	<update id="delete" parameterType="integer">

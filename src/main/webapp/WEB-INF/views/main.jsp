@@ -9,15 +9,6 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="fb:app_id" content="258676027581965">
-<meta property="og:type" content="website">
-<meta property="og:image"
-	content="https://everytime.kr/images/og_image.png">
-<meta property="og:url" content="https://everytime.kr/c/379">
-<meta property="og:site_name" content="에브리타임">
-<meta property="og:title" content="에브리타임">
-<meta property="og:description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="description"
 	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
 <meta name="keywords"
@@ -39,6 +30,50 @@
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript" src="/resources/js/community.side.js"></script>
 <script type="text/javascript" src="/resources/js/community.index.js"></script>
+
+<!-- popup -->
+<script type="text/javascript">
+	/* 창 크기 설정 */
+	function setting(w, h) {
+		var popupWidth = w;
+		var popupHeight = h;
+
+		var popupX = Math.ceil(window.screen.width - popupWidth) / 2;
+		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var popupY = Math.ceil(window.screen.height - popupHeight) / 2;
+		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+		var option = "width=" + w + ",height=" + h + ",left=" + popupX
+				+ ",top=" + popupY + ",screenX=" + popupX + ",screenY="
+				+ popupY + "resizable=no;";
+
+		return option;
+
+	}
+
+	/* 쪽지쓰기 버튼 이벤트 */
+	function sendmessagePopup() {
+		var url = "sendmessagePopup";
+
+		var newOption = setting(504, 413);
+
+		window.open(url, "", newOption);
+
+	}
+	
+	/* 내 쪽지함 버튼 이벤트 */
+	function myMsgsPopup(){
+		var url = "/my_receivedMail";
+		
+		var newOption = setting(500,471);
+		
+		window.open(url,"",newOption);
+	}
+
+</script>
+
+
 </head>
 <body style="">
 	<nav>
@@ -50,11 +85,25 @@
 				</p>
 			</div>
 			<div id="account">
-			<c:set var="id" value="${member.id }" />
-			<c:if test="${empty id }">
-				<a href="/loginForm" class="button">로그인</a> <a href="/registerForm"
-					class="button red">회원가입</a>'
-			</c:if>		
+				<c:set var="id" value="${member.id }" />
+				<c:if test="${not empty member.id }">
+					<div style="height: 187px;">
+						<table width="180px">
+							<tr>
+								<td style="padding-top: 5px"><a href="my_receivedMail"
+									style="font-size: 13px; color: #7d7d7d"> 쪽지함 </a></td>
+								<td align="right"><a href="javascript:sendmessagePopup();"
+									style="font-size: 13px; color: #7d7d7d">쪽지쓰기</a></td>
+							</tr>
+						</table>
+
+					</div>
+					<a href="/mypage" title="내 정보" class="icon my">내 정보</a>
+				</c:if>
+				<c:if test="${empty id }">
+					<a href="/loginForm" class="button">로그인</a>
+					<a href="/registerForm" class="button red">회원가입</a>'
+			</c:if>
 			</div>
 			<ul id="menu">
 				<li class="active"><a href="#">게시판</a></li>
@@ -102,7 +151,7 @@
 		</div>
 		<div class="leftside">
 			<div class="card pconly">
-			
+
 				<c:if test="${empty id }">
 					<form class="login">
 						<h3>
@@ -116,7 +165,7 @@
 					<form class="logged">
 						<img src="https://cf-fpi.everytime.kr/0.png" class="picture">
 						<p class="nickname">${member.id }</p>
-						<p class="school">${member.nickname }</p>						
+						<p class="school">${member.nickname }</p>
 						<ul class="buttons">
 							<li><a href="mypage">내 정보</a></li>
 							<li><a href="logout">로그아웃</a></li>
@@ -132,7 +181,7 @@
 						</div>
 					</form>
 				</c:if>
-				
+
 			</div>
 			<div class="card">
 				<div class="banner">
