@@ -9,8 +9,8 @@ public class Book {
 	private String title; 		// 책 제목
 	private String authors;		// 저자
 	private String publisher;	// 출판사
-	private String price;			// 가격
+	private String price;		// 가격
 	private String translators;	// 옮긴이
-	private String datetime;		// 출판일
+	private String datetime;	// 출판일
 	private String thumbnail; 	// 썸네일
 }

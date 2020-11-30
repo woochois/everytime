@@ -45,10 +45,8 @@ public class BooksController {
  		// 데이터 가져오기
  		List<Book> booklist = bs.selectList(book);
  		model.addAttribute("booklist", booklist);
-
  		
 		return "bookSellForm";
 	}
-	
 	
 }
