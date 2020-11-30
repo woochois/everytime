@@ -9,8 +9,6 @@
 <body>
 <script type="text/javascript">
 	location.href="main";
-	//location.href="loginForm";
-	//location.href="freeReplyList";
 </script>
 </body>
-</html>c
+</html>

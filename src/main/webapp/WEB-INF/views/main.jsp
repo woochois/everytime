@@ -37,40 +37,30 @@
 	function setting(w, h) {
 		var popupWidth = w;
 		var popupHeight = h;
-
 		var popupX = Math.ceil(window.screen.width - popupWidth) / 2;
 		// 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-
 		var popupY = Math.ceil(window.screen.height - popupHeight) / 2;
 		// 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
 		var option = "width=" + w + ",height=" + h + ",left=" + popupX
 				+ ",top=" + popupY + ",screenX=" + popupX + ",screenY="
 				+ popupY + "resizable=no;";
-
 		return option;
-
 	}
-
 	/* 쪽지쓰기 버튼 이벤트 */
 	function sendmessagePopup() {
 		var url = "sendmessagePopup";
-
 		var newOption = setting(504, 413);
+		window.open(url, "", newOption);
+	}
+
+	/* 내 쪽지함 버튼 이벤트 */
+	function myMsgsPopup() {
+		var url = "/my_receivedMail";
+
+		var newOption = setting(500, 471);
 
 		window.open(url, "", newOption);
-
 	}
-	
-	/* 내 쪽지함 버튼 이벤트 */
-	function myMsgsPopup(){
-		var url = "/my_receivedMail";
-		
-		var newOption = setting(500,471);
-		
-		window.open(url,"",newOption);
-	}
-
 </script>
 
 
@@ -88,17 +78,16 @@
 				<c:set var="id" value="${member.id }" />
 				<c:if test="${not empty member.id }">
 					<div style="height: 187px;">
-						<table width="180px">
-							<tr>
-								<td style="padding-top: 5px"><a href="my_receivedMail"
-									style="font-size: 13px; color: #7d7d7d"> 쪽지함 </a></td>
-								<td align="right"><a href="javascript:sendmessagePopup();"
-									style="font-size: 13px; color: #7d7d7d">쪽지쓰기</a></td>
-							</tr>
-						</table>
+
+						<a href="javascript:myMsgsPopup();"
+							style="font-size: 13px; color: #7d7d7d">쪽지함</a> <a
+							href="javascript:sendmessagePopup();"
+							style="font-size: 13px; color: #7d7d7d">쪽지쓰기</a> <a
+							href="/mypage">내 정보</a>
+
 
 					</div>
-					<a href="/mypage" title="내 정보" class="icon my">내 정보</a>
+
 				</c:if>
 				<c:if test="${empty id }">
 					<a href="/loginForm" class="button">로그인</a>

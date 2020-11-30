@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Book {
+	private int listnum;
 	private String isbn; 		// ISBN
 	private String title; 		// 책 제목
 	private String authors;		// 저자

@@ -7,9 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <body>
-	<script type="text/javascript">
-		alert("선택 완료");
-		location.href="bookSell";
-	</script>	
-</body>
-</html>
+<c:forEach var="booklist" items="${booklist}">
+     <div class="container">
+     	<table>
+     		<tr>
+     			<td>${member.nickname}</td>
+     		</tr>
+     		<tr>
+     			<td>${booklist.title}</td>
+     		</tr>
+     		<tr>
+     			<td>${booklist.authors}</td>
+     		</tr>
+     		<tr>
+     			<td>${booklist.publisher}</td>
+     		</tr>
+     		<tr>
+     			<td>${booklist.price}</td>
+     		</tr>
+     		<tr>
+     			<td>${booklist.translators}</td>
+     		</tr>
+     	</table> 
+     </div>
+ </c:forEach>
+ </body>
+ </html> 

@@ -38,6 +38,7 @@ public class FreeReplyController {
 		FreeBoard freeboard = fbs.select(fbno);
 		freereply.setFrbno(fbno);
 		List<FreeReply> frList = frs.list(freereply);
+		
 
 		model.addAttribute("member", member);
 		model.addAttribute("freeboard", freeboard);

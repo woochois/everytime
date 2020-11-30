@@ -99,7 +99,7 @@ input[type=submit] {
 				<li><a href="#">강의평가</a></li>
 				<li><a href="#">학점계산기</a></li>
 				<li><a href="#">친구</a></li>
-				<li><a href="#">책방</a></li>
+				<li><a href="/books">책방</a></li>
 				<li><a href="#">캠퍼스픽</a></li>
 			</ul>
 		</div>
@@ -109,12 +109,12 @@ input[type=submit] {
 			<div class="divider"></div>
 			<div class="group">
 				<ul>
-					<li><a href="#" data-id="389131" class="new active">자유게시판</a></li>
+					<li><a href="/freeBoardList" data-id="389131" class="new active">자유게시판</a></li>
 					<li><a href="#" data-id="258914" class="new">비밀게시판</a></li>
 					<li><a href="#" data-id="389411">졸업생게시판</a></li>
 					<li><a href="#" data-id="389220" class="new">새내기게시판</a></li>
 					<li><a href="#" data-id="389359" class="new">장터게시판</a></li>
-					<li><a href="#" data-id="367503">홍보게시판</a></li>
+					<li><a href="/promotionBoardList" data-id="367503">홍보게시판</a></li>
 					<li><a href="#" data-id="418833">동아리·학회</a></li>
 				</ul>
 			</div>

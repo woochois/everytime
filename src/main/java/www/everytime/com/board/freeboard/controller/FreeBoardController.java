@@ -61,7 +61,7 @@ public class FreeBoardController {
 		model.addAttribute("pb", pb);
 		return "freeBoardList";
 	}
-	
+	 
 	// 게시글 입력
 	@RequestMapping("/insert")
 	public String insert(FreeBoard freeboard, String pageNum, HttpSession session, Model model) {
