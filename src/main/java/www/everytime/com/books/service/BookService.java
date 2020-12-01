@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import www.everytime.com.books.model.Book;
+import www.everytime.com.books.model.BookSell;
 
 @Service
 public interface BookService {
@@ -14,5 +15,7 @@ public interface BookService {
 	void insert(Book book);
 	
 	List<Book> selectList(Book book);
+
+	void listinsert(BookSell booksell);
 
 }

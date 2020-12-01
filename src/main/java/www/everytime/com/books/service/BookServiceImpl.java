@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import www.everytime.com.books.dao.BookDao;
 import www.everytime.com.books.model.Book;
+import www.everytime.com.books.model.BookSell;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -24,5 +25,9 @@ public class BookServiceImpl implements BookService{
 	public List<Book> selectList(Book book) {
  		return bd.selectList(book);
  	}
+
+	public void listinsert(BookSell booksell) {
+		bd.listinsert(booksell);
+	}
 
 }

@@ -23,8 +23,15 @@
 		<property name="username" value="${userId}" />
 		<property name="password" value="${password}" />
 	</bean>
+	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
+
+	
 </beans>

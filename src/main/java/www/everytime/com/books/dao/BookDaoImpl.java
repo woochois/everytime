@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import www.everytime.com.books.model.Book;
+import www.everytime.com.books.model.BookSell;
 
 @Repository
 public class BookDaoImpl implements BookDao{
@@ -24,6 +25,10 @@ public class BookDaoImpl implements BookDao{
 	public List<Book> selectList(Book book) {
  		return sst.selectList("bookns.selectList", book);
  	}
+
+	public void listinsert(BookSell booksell) {
+		sst.insert("bookns.listinsert", booksell);
+	}
 		
 	
 }

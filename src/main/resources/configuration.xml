@@ -10,14 +10,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="FreeBoardRec" type="www.everytime.com.board.freeboard.model.FreeBoardRec"/>
 		<typeAlias alias="FreeBoardReadCount" type="www.everytime.com.board.freeboard.model.FreeBoardReadCount"/>
 		<typeAlias alias="FreeReplyRec" type="www.everytime.com.reply.freereply.model.FreeReplyRec" />
+		
 		<typeAlias alias="Book" type="www.everytime.com.books.model.Book" />
+		<typeAlias alias="BookSell" type="www.everytime.com.books.model.BookSell" />
 		
 		<typeAlias alias="Message" type="www.everytime.com.message.model.Message" />
 		
 		<typeAlias alias="PromotionBoard" type="www.everytime.com.board.promotionboard.model.PromotionBoard"/>
 		<typeAlias alias="PromotionReply" type="www.everytime.com.reply.promotionreply.model.PromotionReply"/>
 		<typeAlias alias="PromotionBoardRec" type="www.everytime.com.board.promotionboard.model.PromotionBoardRec"/>
-		<typeAlias alias="PromotionBoardReadCount" type="www.everytime.com.board.promotionboard.model.PromotionBoardReadCount"></typeAlias>
+		<typeAlias alias="PromotionBoardReadCount" type="www.everytime.com.board.promotionboard.model.PromotionBoardReadCount"/>
 		<typeAlias alias="PromotionReplyRec" type="www.everytime.com.reply.promotionreply.model.PromotionReplyRec" />
 	</typeAliases>
 	<mappers>

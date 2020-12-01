@@ -2,12 +2,15 @@ package www.everytime.com.books.model;
 
  import java.sql.Date;
 
- import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.Data;
 
  @Data
  public class BookSell {
- 	private int listnum;
- 	private int sellnum;
+	 
+ 	 private int listnum;
+ 	 private int sellnum;
      private String sellprice;
      private String contents;
      private Date datetime;
@@ -22,4 +25,7 @@ package www.everytime.com.books.model;
      private String directdeal;
      private String location;
      private String map;
+     
+  // 파일 upload용
+     private MultipartFile file; // uplaodForm.jsp에 있는 input name과 동일해야함
  }
