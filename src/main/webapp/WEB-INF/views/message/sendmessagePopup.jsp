@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
-<% request.setCharacterEncoding("utf-8"); %>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +13,11 @@
 function winClose(){
 	window.open('', '_self').close();
 }
-
 </script>
 </head>
 <body>
 <div class="container">
- <form name="msgSuccess" action="msgSuccess" method="post">
+ <form name="msgSuccess" action="/msgSuccess" method="post">
 	<div style="padding:10px">
 	<input type="hidden" name="m_sender_nick" value="${member.nickname }"/>
 	<br/>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +10,21 @@
 <body>
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
-		alert("댓글이 삭제 되었습니다");
-		location.href="/promotionBoardListView/pbno/${prbno}/pageNum/${pageNum}";
+		alert("로그인 성공");
+		location.href="../main";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
-		alert("댓글 삭제 실패!!");
+		alert("로그인 실패");
 		history.go(-1);
 	</script>
 </c:if>
-
+<c:if test="${result == -1 }">
+	<script type="text/javascript">
+		alert("없는 아이디입니다.");
+		history.go(-1);
+	</script>
+</c:if>
 </body>
 </html>

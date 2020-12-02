@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
 		alert("댓글이 삭제 되었습니다");
-		location.href="/freeBoardListView/fbno/${frbno}/pageNum/${pageNum}";
+		location.href="../board/freeboard/freeBoardListView/fbno/${frbno}/pageNum/${pageNum}";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">

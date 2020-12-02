@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
-
+<%@ include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,37 +17,27 @@ $(function(){
 		}else{
 			$("input[type=checkbox]").prop("checked", false);
 		}
-		
 	});
-	
 });
 
 function check(box){
-	
 	if(box.checked == true){
 		var number = box.value;
-		//alert(box.value + "체크됨" + number);
-		
 		 return number;
 	}
-	
 }
+
 function del(){
  	for(var i = 0; i < parseInt("${fn:length(sendlist)}"); i++) {
 		if ($("#inlineCheckbox1_"+i).is(":checked") == true) {
 			var sendData = 'm_num=' + $("#inlineCheckbox1_"+i).val();
-			//alert(sendData);
-			$.post('/rDelete.html', sendData, function(data) {
-				
-			//location.reload();
+			$.post('/rDelete', sendData, function(data) {	
 			});
 		}
 	} 
 	alert("삭제 되었습니다.");
  	location.reload();
 }
-
-
 </script>
 </head>
 <body>
@@ -62,17 +51,16 @@ function del(){
 	<table >
 		<tr > 
 			<td style="cursor:pointer;padding-top:5px;font-size:13px"> 
-			<span id="received" > <img src="${path }/resources/images/msgR.PNG"> 
-			<a href="my_receivedMail.html" style="color:black"> 
+			<span id="received" >
+			<a href="/my_receivedMail" style="color:black"> 
 			받은 쪽지함 </a></span>&nbsp; | &nbsp; </td> 
 			<td style="cursor:default;font-weight:bolder; padding-top:5px;font-size:14px"> 
-			<span id="send"> <img src="${path }/resources/images/msgS.PNG"> 
-			<a href="sendMail.html" style="color:black"> 
+			<span id="send">
+			<a href="/sendMail" style="color:black"> 
 			보낸 쪽지함 </a></span></td>	
 			
 			<td align="right"> 
 				<div align="right">
-				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 				<button class="btn btn-default btn-sm" onclick="del()">삭제</button>
 				</div>
 			</td>		
@@ -113,26 +101,26 @@ function del(){
 <div align="center">
 	<ul class="pagination">
 		<c:if test="${pbm.startPage > pbm.pagePerBlock}">
-			<li><a href="sendMail.html?pageNum=1">
+			<li><a href="/sendMail?pageNum=1">
 				<span class="glyphicon glyphicon-backward"></span>
 			</a></li>
-			<li><a href="sendMail.html?pageNum=${pbm.startPage-1}">
+			<li><a href="/sendMail?pageNum=${pbm.startPage-1}">
 				<span class="glyphicon glyphicon-triangle-left"></span>
 			</a></li>
 		</c:if>
 		<c:forEach var="i" begin="${pbm.startPage}" end="${pbm.endPage}">
 			<c:if test="${i==pbm.currentPage}">
-				<li class="active"><a href="sendMail.html?pageNum=${i}">${i}</a></li>
+				<li class="active"><a href="/sendMail?pageNum=${i}">${i}</a></li>
 			</c:if>
 			<c:if test="${i!=pbm.currentPage}">
-				<li><a href="sendMail.html?pageNum=${i}">${i}</a></li>
+				<li><a href="/sendMail?pageNum=${i}">${i}</a></li>
 			</c:if>
 		</c:forEach>
 		<c:if test="${pbm.endPage < pbm.totalPage }">
-			<li><a href="sendMail.html?pageNum=${pbm.endPage+1}">
+			<li><a href="/sendMail?pageNum=${pbm.endPage+1}">
 				<span class="glyphicon glyphicon-triangle-right"></span>
 			</a></li>
-			<li><a href="sendMail.html?pageNum=${pbm.totalPage}">
+			<li><a href="/sendMail?pageNum=${pbm.totalPage}">
 				<span class="glyphicon glyphicon-forward"></span>
 			</a></li>
 		</c:if>
