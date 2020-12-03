@@ -23,6 +23,7 @@
 		values (#{contents}, #{underline}, #{writing}, #{cover}, #{nameentry},
 		#{pagecolor}, #{pagestate}, #{sellprice}, #{delivery}, #{directdeal},
 		#{location})
+		
 	</insert>
 
 </mapper>

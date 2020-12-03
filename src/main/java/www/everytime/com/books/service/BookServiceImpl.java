@@ -30,4 +30,9 @@ public class BookServiceImpl implements BookService{
 		bd.listinsert(booksell);
 	}
 
+	public void fileinsert(String saveFile) {
+		bd.fileinsert(saveFile);
+		
+	}
+
 }

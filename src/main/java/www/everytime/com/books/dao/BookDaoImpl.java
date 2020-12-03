@@ -29,6 +29,10 @@ public class BookDaoImpl implements BookDao{
 	public void listinsert(BookSell booksell) {
 		sst.insert("bookns.listinsert", booksell);
 	}
+
+	public void fileinsert(String saveFile) {
+		sst.insert("bookns.fileinsert", saveFile);
+	}
 		
 	
 }

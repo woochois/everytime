@@ -18,4 +18,6 @@ public interface BookService {
 
 	void listinsert(BookSell booksell);
 
+	void fileinsert(String saveFile);
+
 }

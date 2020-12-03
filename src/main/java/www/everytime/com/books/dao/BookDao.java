@@ -13,4 +13,6 @@ public interface BookDao {
 
 	void listinsert(BookSell booksell);
 
+	void fileinsert(String saveFile);
+
 }

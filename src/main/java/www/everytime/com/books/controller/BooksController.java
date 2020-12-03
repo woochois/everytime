@@ -22,6 +22,11 @@ import www.everytime.com.member.service.MemberService;
 @Controller
 public class BooksController {
 
+	private static final int RESULT_EXCEED_SIZE = -2;
+	private static final int RESULT_UNACCEPTED_EXTENSION = -1;
+	private static final int RESULT_SUCCESS = 1;
+	private static final long LIMIT_SIZE = 10 * 1024 * 1024;
+
 	@Autowired
 	private BookService bs;
 
@@ -57,27 +62,36 @@ public class BooksController {
 	}
 
 	@RequestMapping("/upload")
-	public String upload(MultipartHttpServletRequest mtfRequest, BookSell booksell, Model model) {
+	public String upload(MultipartHttpServletRequest request, BookSell booksell)
+			throws IllegalStateException, IOException {
 
 		bs.listinsert(booksell);
 
-		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+		MultipartFile mf = request.getFile("imgfile1");
 		
 		String path = "/Users/Hot_George/Documents/fileupload/";
 
-		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-			String saveFile = path + System.currentTimeMillis() + originFileName;
-			model.addAttribute("saveFile", System.currentTimeMillis() + originFileName);
-			try {
-				mf.transferTo(new File(saveFile));
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return "upload";
+		String originalName = mf.getOriginalFilename();
+		String saveFile = path + System.currentTimeMillis() + originalName;
+		
+		mf.transferTo(new File(saveFile));
 
+		return "upload";
 	}
+//	
+//    //로직은 언제나 Service에서 짜도록 하자.
+//    //중간실패시 rollback은 고려하지 않았음.
+//    @ResponseBody
+//    @RequestMapping(value="/imageupload", method=RequestMethod.POST)
+//    public String multiImageUpload(@RequestParam("imgfile1")List<MultipartFile> images) throws IllegalStateException, IOException {
+//        
+//        String path = "/Users/Hot_George/Documents/fileupload/";
+//        
+//        for(MultipartFile image : images) {
+//            String originalName = image.getOriginalFilename();
+//            String saveFile = path + System.currentTimeMillis() + originalName;
+//        }
+//        
+//        return "upload";
+//    }
 }
