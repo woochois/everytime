@@ -19,6 +19,7 @@ import www.everytime.com.reply.promotionreply.model.PromotionReplyRec;
 import www.everytime.com.reply.promotionreply.service.PromotionReplyService;
 
 @Controller
+@RequestMapping("/reply/*")
 public class PromotionReplyController {
 	@Autowired
 	private PromotionReplyService prs;
@@ -43,13 +44,13 @@ public class PromotionReplyController {
 		model.addAttribute("promotionboard", promotionboard);
 		model.addAttribute("prList", prList);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionReplyList";
+		return "/reply/promotionReplyList";
 	}
 
 	@RequestMapping("prInsert")
 	public String prInsert(PromotionReply promotionreply, String pageNum) {
 		prs.insert(promotionreply);
-		return "redirect:/promotionReplyList/pbno/" + promotionreply.getPrbno() + "/pageNum/" + pageNum;
+		return "redirect:/reply/promotionReplyList/pbno/" + promotionreply.getPrbno() + "/pageNum/" + pageNum;
 	}
 
 	@RequestMapping("/promotionReplyDelete/prbno/{prbno}/prrno/{prrno}/pageNum/{pageNum}")
@@ -58,13 +59,13 @@ public class PromotionReplyController {
 		int result = prs.delete(prrno);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionReplyDelete";
+		return "/reply/promotionReplyDelete";
 	}
 
 	@RequestMapping("prDelete")
 	public String rDelete(PromotionReply promotionreply, String pageNum) {
 		prs.delete(promotionreply.getPrrno());
-		return "redirect:/promotionReplyList/pbno/" + promotionreply.getPrbno() + "/pageNum/" + pageNum;
+		return "redirect:/reply/promotionReplyList/pbno/" + promotionreply.getPrbno() + "/pageNum/" + pageNum;
 	}
 	
 	// 추천
@@ -85,6 +86,6 @@ public class PromotionReplyController {
 		model.addAttribute("pbno",pbno);
 		model.addAttribute("pageNum",pageNum);
 		
-		 return "promotionBoardRecommend"; 
+		 return "/reply/promotionBoardRecommend"; 
 	}
 }

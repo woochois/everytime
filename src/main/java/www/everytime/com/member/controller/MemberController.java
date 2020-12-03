@@ -12,6 +12,7 @@ import www.everytime.com.member.model.Member;
 import www.everytime.com.member.service.MemberService;
 
 @Controller
+@RequestMapping("/member/*")
 public class MemberController {
 	@Autowired
 	private MemberService ms;
@@ -30,12 +31,12 @@ public class MemberController {
 		}
 	
 		model.addAttribute("result", result);
-		return "login";
+		return "/member/login";
 	}
 	
 	@RequestMapping("loginForm")
 	public String loginForm() {
-		return "loginForm";
+		return "/member/loginForm";
 	}
 	
 	@RequestMapping("register")
@@ -48,12 +49,12 @@ public class MemberController {
 			result = -1;
 		}
 		model.addAttribute("result", result);
-		return "register";
+		return "/member/register";
 	}
 	
 	@RequestMapping("registerForm")
 	public String registerForm() {
-		return "registerForm";
+		return "/member/registerForm";
 	}
 	
 	@RequestMapping(value="idChk",produces="text/html; charset=utf-8")
@@ -71,12 +72,12 @@ public class MemberController {
 		String id = (String)session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
-		return "updateForm";
+		return "/member/updateForm";
 	}
 	
 	@RequestMapping("update")
 	public String update(Member member, Model model, HttpSession session) {
-		return "update";
+		return "/member/update";
 	}
 	
 	@RequestMapping("mypage")
@@ -84,7 +85,7 @@ public class MemberController {
 		String id = (String)session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
-		return "mypage";
+		return "/member/mypage";
 	}
 	
 	@RequestMapping("delete")
@@ -93,12 +94,12 @@ public class MemberController {
 		int result = ms.delete(id);
 		if(result >0) session.invalidate();
 		model.addAttribute("result", result);		
-		return "delete";
+		return "/member/delete";
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "logout";
+		return "/member/logout";
 	}
 }

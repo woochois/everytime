@@ -20,16 +20,16 @@ import www.everytime.com.member.service.MemberService;
 import www.everytime.com.reply.promotionreply.model.PromotionReply;
 
 @Controller
+@RequestMapping("/board/promotionboard/*")
 public class PromotionBoardController {
 	@Autowired
 	private PromotionBoardService pbs;
 	@Autowired
 	private MemberService ms;
 	
-	
 	@RequestMapping("/promotionBoardList")
 	public String init() {		
-		return "redirect:/promotionBoardList/pageNum/1";				
+		return "redirect:/board/promotionboard/promotionBoardList/pageNum/1";				
 	}
 	
 	// 게시글 목록
@@ -58,7 +58,7 @@ public class PromotionBoardController {
 		model.addAttribute("promotionBoardList", promotionBoardList);
 		model.addAttribute("promotionboard", promotionboard);
 		model.addAttribute("pb", pb);
-		return "promotionBoardList";
+		return "/board/promotionboard/promotionBoardList";
 	}
 	
 	// 게시글 입력
@@ -71,7 +71,7 @@ public class PromotionBoardController {
 		model.addAttribute("pageNum", pageNum);
 		
 		pbs.pbinsert(promotionboard);
-		return "redirect:/promotionBoardList/pageNum/1";
+		return "redirect:/board/promotionboard/promotionBoardList/pageNum/1";
 	}
 	// 게시글 상세 내역
 	@RequestMapping("/promotionBoardListView/pbno/{pbno}/pageNum/{pageNum}")
@@ -89,7 +89,7 @@ public class PromotionBoardController {
 		model.addAttribute("member", member);
 		model.addAttribute("promotionboard", promotionboard);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionBoardListView";
+		return "/board/promotionboard/promotionBoardListView";
 	}
 	
 	//게시글 수정
@@ -98,7 +98,7 @@ public class PromotionBoardController {
 		PromotionBoard promotionboard = pbs.select(pbno);
 		model.addAttribute("promotionboard", promotionboard);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionBoardUpdateForm";
+		return "/board/promotionboard/promotionBoardUpdateForm";
 	}
 	
 	//게시글 수정 성공여부 alert
@@ -108,7 +108,7 @@ public class PromotionBoardController {
 		model.addAttribute("result", result);
 		model.addAttribute("promotionboard", promotionboard);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionBoardUpdate";
+		return "/board/promotionboard/promotionBoardUpdate";
 	}
 	
 	//게시글 삭제 및 성공 여부
@@ -117,7 +117,7 @@ public class PromotionBoardController {
 		int result = pbs.delete(pbno);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-		return "promotionBoardDelete";
+		return "/board/promotionboard/promotionBoardDelete";
 	}
 	
 	// 게시글 추천
@@ -140,7 +140,7 @@ public class PromotionBoardController {
 		model.addAttribute("pbno",pbno);
 		model.addAttribute("pageNum", pageNum);
 		
-		return "promotionBoardRecommend";
+		return "/board/promotionboard/promotionBoardRecommend";
 		
 	}
 }

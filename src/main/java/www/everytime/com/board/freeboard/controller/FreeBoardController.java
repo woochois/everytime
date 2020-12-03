@@ -20,6 +20,7 @@ import www.everytime.com.member.service.MemberService;
 import www.everytime.com.reply.freereply.model.FreeReply;
 
 @Controller
+@RequestMapping("/board/freeboard/*")
 public class FreeBoardController {
 	
 	@Autowired
@@ -30,7 +31,7 @@ public class FreeBoardController {
 	
 	@RequestMapping("/freeBoardList")
 	public String init() {		
-		return "redirect:/freeBoardList/pageNum/1";				
+		return "redirect:/board/freeboard/freeBoardList/pageNum/1";				
 	}
 	
 	// 게시글 목록
@@ -59,7 +60,7 @@ public class FreeBoardController {
 		model.addAttribute("freeBoardList", freeBoardList);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pb", pb);
-		return "freeBoardList";
+		return "/board/freeboard/freeBoardList";
 	}
 	 
 	// 게시글 입력
@@ -72,7 +73,7 @@ public class FreeBoardController {
 		model.addAttribute("pageNum", pageNum);
 		
 		fbs.insert(freeboard);
-		return "redirect:/freeBoardList/pageNum/1";
+		return "redirect:/board/freeboard/freeBoardList/pageNum/1";
 	}
 	// 게시글 상세 내역
 	@RequestMapping("/freeBoardListView/fbno/{fbno}/pageNum/{pageNum}")
@@ -89,7 +90,7 @@ public class FreeBoardController {
 		model.addAttribute("member", member);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pageNum", pageNum);
-		return "freeBoardListView";
+		return "/board/freeboard/freeBoardListView";
 	}
 	
 	//게시글 수정
@@ -98,7 +99,7 @@ public class FreeBoardController {
 		FreeBoard freeboard = fbs.select(fbno);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pageNum", pageNum);
-		return "freeBoardUpdateForm";
+		return "/board/freeboard/freeBoardUpdateForm";
 	}
 	
 	//게시글 수정 성공여부 alert
@@ -108,7 +109,7 @@ public class FreeBoardController {
 		model.addAttribute("result", result);
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("pageNum", pageNum);
-		return "freeBoardUpdate";
+		return "/board/freeboard/freeBoardUpdate";
 	}
 	
 	//게시글 삭제 및 성공 여부
@@ -117,7 +118,7 @@ public class FreeBoardController {
 		int result = fbs.delete(fbno);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-		return "freeBoardDelete";
+		return "/board/freeboard/freeBoardDelete";
 	}
 	
 	// 게시글 추천
@@ -140,7 +141,7 @@ public class FreeBoardController {
 		model.addAttribute("fbno",fbno);
 		model.addAttribute("pageNum", pageNum);
 		
-		return "freeBoardRecommend";
+		return "/board/freeboard/freeBoardRecommend";
 		
 	}
 	

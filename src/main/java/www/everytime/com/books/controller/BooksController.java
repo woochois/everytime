@@ -20,6 +20,7 @@ import www.everytime.com.member.model.Member;
 import www.everytime.com.member.service.MemberService;
 
 @Controller
+@RequestMapping("/books/*")
 public class BooksController {
 
 	private static final int RESULT_EXCEED_SIZE = -2;
@@ -35,12 +36,12 @@ public class BooksController {
 
 	@RequestMapping("/books")
 	public String books() {
-		return "books";
+		return "/books/books";
 	}
 
 	@RequestMapping("/bookSell")
 	public String bookSell() {
-		return "bookSell";
+		return "/books/bookSell";
 	}
 
 	@RequestMapping("/bookSellForm")
@@ -58,7 +59,7 @@ public class BooksController {
 
 		model.addAttribute("booklist", booklist);
 
-		return "bookSellForm";
+		return "/books/bookSellForm";
 	}
 
 	@RequestMapping("/upload")
@@ -76,22 +77,6 @@ public class BooksController {
 		
 		mf.transferTo(new File(saveFile));
 
-		return "upload";
+		return "/books/upload";
 	}
-//	
-//    //로직은 언제나 Service에서 짜도록 하자.
-//    //중간실패시 rollback은 고려하지 않았음.
-//    @ResponseBody
-//    @RequestMapping(value="/imageupload", method=RequestMethod.POST)
-//    public String multiImageUpload(@RequestParam("imgfile1")List<MultipartFile> images) throws IllegalStateException, IOException {
-//        
-//        String path = "/Users/Hot_George/Documents/fileupload/";
-//        
-//        for(MultipartFile image : images) {
-//            String originalName = image.getOriginalFilename();
-//            String saveFile = path + System.currentTimeMillis() + originalName;
-//        }
-//        
-//        return "upload";
-//    }
 }

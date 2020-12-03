@@ -16,6 +16,7 @@ import www.everytime.com.message.model.Message;
 import www.everytime.com.message.service.MessageService;
 
 @Controller
+@RequestMapping("/message/*")
 public class MessageController {
 
 	@Autowired
@@ -33,7 +34,7 @@ public class MessageController {
 		
 		model.addAttribute("member", member);
 
-		return "sendmessagePopup";
+		return "/message/sendmessagePopup";
 	}
 
 	@RequestMapping("/msgSuccess")
@@ -49,7 +50,7 @@ public class MessageController {
 		model.addAttribute("result", result);
 		model.addAttribute("message", message);
 		model.addAttribute("member", member);
-		return "msgSuccess";
+		return "/message/msgSuccess";
 	}
 
 	@RequestMapping("/my_receivedMail")
@@ -64,7 +65,7 @@ public class MessageController {
 		List<Message> reclist = msgs.reclist(message);
 		model.addAttribute("reclist", reclist);
 		
-		return "my_receivedMail";
+		return "/message/my_receivedMail";
 	}
 
 	@RequestMapping("/sendMail")
@@ -79,20 +80,20 @@ public class MessageController {
 		List<Message> sendlist = msgs.sendlist(message);
 		model.addAttribute("sendlist", sendlist);
 
-		return "sendMail";
+		return "/message/sendMail";
 	}
 
 	// 보낸메일삭제
 	@RequestMapping("/rDelete")
 	public String rDelete(Message message) {
 		msgs.delete(message.getM_num());
-		return "redirect:/sendMail";
+		return "redirect:/message/sendMail";
 	}
 
 	// 받은메일삭제
 	@RequestMapping("/rDelete2")
 	public String rDelete2(Message message) {
 		msgs.delete2(message.getM_num());
-		return "redirect:/my_receivedMail";
+		return "redirect:/message/my_receivedMail";
 	}
 }

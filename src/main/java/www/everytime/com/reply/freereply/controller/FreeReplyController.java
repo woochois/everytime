@@ -19,6 +19,7 @@ import www.everytime.com.reply.freereply.model.FreeReplyRec;
 import www.everytime.com.reply.freereply.service.FreeReplyService;
 
 @Controller
+@RequestMapping("/reply/*")
 public class FreeReplyController {
 	@Autowired
 	private FreeReplyService frs;
@@ -44,13 +45,13 @@ public class FreeReplyController {
 		model.addAttribute("freeboard", freeboard);
 		model.addAttribute("frList", frList);
 		model.addAttribute("pageNum", pageNum);
-		return "freeReplyList";
+		return "/reply/freeReplyList";
 	}
 
 	@RequestMapping("frInsert")
 	public String rInsert(FreeReply freereply, String pageNum) {
 		frs.insert(freereply);
-		return "redirect:/freeReplyList/fbno/" + freereply.getFrbno() + "/pageNum/" + pageNum;
+		return "redirect:/reply/freeReplyList/fbno/" + freereply.getFrbno() + "/pageNum/" + pageNum;
 	}
 
 	@RequestMapping("/freeReplyDelete/frbno/{frbno}/frrno/{frrno}/pageNum/{pageNum}")
@@ -59,13 +60,13 @@ public class FreeReplyController {
 		int result = frs.delete(frrno);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-		return "freeReplyDelete";
+		return "/reply/freeReplyDelete";
 	}
 
 	@RequestMapping("frDelete")
 	public String rDelete(FreeReply freereply, String pageNum) {
 		frs.delete(freereply.getFrrno());
-		return "redirect:/freeReplyList/fbno/" + freereply.getFrbno() + "/pageNum/" + pageNum;
+		return "redirect:/reply/freeReplyList/fbno/" + freereply.getFrbno() + "/pageNum/" + pageNum;
 	}
 	@RequestMapping("/frrRec/fbno/{fbno}/pageNum/{pageNum}")
 	public String frrRec(@PathVariable int fbno,@PathVariable String pageNum,FreeReplyRec freereplyrec, HttpSession session,Model model) {
@@ -84,7 +85,7 @@ public class FreeReplyController {
 		model.addAttribute("fbno",fbno);
 		model.addAttribute("pageNum",pageNum);
 		
-		 return "freeBoardRecommend"; 
+		 return "/reply/freeBoardRecommend"; 
 	}
 
 }

@@ -9,12 +9,6 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
-<meta name="keywords"
-	content="에브리타임, 에타, everytime, 시간표, 수강신청, 강의평가, 학점계산기, 학식, 오늘의학식, 책방, 중고책, 대학생, 대학교, 대학, 대학생 시간표, 대학교 시간표, 대학생 커뮤니티, 대학교 커뮤니티, 시간표 앱, 시간표 어플">
-<meta name="naver-site-verification"
-	content="7366738375e320e44bd1c743b364db13086a7b0e">
 <meta name="robots" content="noindex">
 <link type="text/css" href="/resources/css/common.css" rel="stylesheet">
 <link type="text/css" href="/resources/css/common.partial.css"
@@ -22,7 +16,7 @@
 <link type="text/css" href="/resources/css/container.community.css"
 	rel="stylesheet">
 <link href="#" rel="shortcut icon">
-<script type="text/javascript" async="" src="/js/analytics.js"></script>
+<script type="text/javascript" src="/js/analytics.js"></script>
 <script type="text/javascript"
 	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
@@ -46,26 +40,25 @@
 				+ popupY + "resizable=no;";
 		return option;
 	}
+	
 	/* 쪽지쓰기 버튼 이벤트 */
 	function sendmessagePopup() {
-		var url = "sendmessagePopup";
+		var url = "/message/sendmessagePopup";
 		var newOption = setting(504, 413);
 		window.open(url, "", newOption);
 	}
 
 	/* 내 쪽지함 버튼 이벤트 */
 	function myMsgsPopup() {
-		var url = "/my_receivedMail";
+		var url = "/message/my_receivedMail";
 
 		var newOption = setting(500, 471);
 
 		window.open(url, "", newOption);
 	}
 </script>
-
-
 </head>
-<body style="">
+<body>
 	<nav>
 		<div class="wrap">
 			<div id="logo">
@@ -90,8 +83,8 @@
 
 				</c:if>
 				<c:if test="${empty id }">
-					<a href="/loginForm" class="button">로그인</a>
-					<a href="/registerForm" class="button red">회원가입</a>'
+					<a href="/member/loginForm" class="button">로그인</a>
+					<a href="/member/registerForm" class="button red">회원가입</a>'
 			</c:if>
 			</div>
 			<ul id="menu">
@@ -100,7 +93,7 @@
 				<li><a href="#">강의평가</a></li>
 				<li><a href="#">학점계산기</a></li>
 				<li><a href="#">친구</a></li>
-				<li><a href="/books">책방</a></li>
+				<li><a href="/books/books">책방</a></li>
 				<li><a href="#">캠퍼스픽</a></li>
 			</ul>
 		</div>
@@ -108,11 +101,11 @@
 	<div id="submenu">
 		<div class="wrap">
 			<ul>
-				<li><a href="/freeBoardList" data-id="393887" class="new">자유게시판</a></li>
+				<li><a href="/board/freeboard/freeBoardList" data-id="393887" class="new">자유게시판</a></li>
 				<li><a href="#" data-id="260228" class="new">비밀게시판</a></li>
 				<li><a href="#" data-id="412760">새내기게시판</a></li>
 				<li><a href="#" data-id="260230">정보게시판</a></li>
-				<li><a href="/promotionBoardList" data-id="367769">홍보게시판</a></li>
+				<li><a href="/board/promotionboard/promotionBoardList" data-id="367769">홍보게시판</a></li>
 				<li><a href="#" data-id="419094">동아리·학회</a></li>
 				<li><a href="#" class="search">게시판 찾기</a></li>
 			</ul>
@@ -130,7 +123,7 @@
 				<a class="hamburger"></a>
 				<h1>한국방송통신대 에브리타임</h1>
 				<ol class="buttons">
-					<li><a href="loginForm">로그인</a></li>
+					<li><a href="/member/loginForm">로그인</a></li>
 				</ol>
 			</div>
 		</aside>
@@ -146,8 +139,8 @@
 						<h3>
 							커뮤니티 이용을 위해<br> <strong>로그인</strong>이 필요합니다!
 						</h3>
-						<a href="loginForm" class="button login">로그인</a> <a
-							href="registerForm" class="button register">에브리타임 회원가입</a>
+						<a href="/member/loginForm" class="button login">로그인</a> <a
+							href="/member/registerForm" class="button register">에브리타임 회원가입</a>
 					</form>
 				</c:if>
 				<c:if test="${not empty id }">
@@ -156,8 +149,8 @@
 						<p class="nickname">${member.id }</p>
 						<p class="school">${member.nickname }</p>
 						<ul class="buttons">
-							<li><a href="mypage">내 정보</a></li>
-							<li><a href="logout">로그아웃</a></li>
+							<li><a href="/member/mypage">내 정보</a></li>
+							<li><a href="/member/logout">로그아웃</a></li>
 						</ul>
 						<hr>
 						<div class="card">
@@ -217,7 +210,7 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="#">자유게시판</a>
+						<a href="/board/freeboard/freeBoardList">자유게시판</a>
 					</h3>
 					<a class="list" href="#"><time>11/04 18:30</time>
 						<p>과제가 너무 재밌어요</p>
@@ -239,7 +232,7 @@
 						<p>
 							로그인을 한 학생들만<br>이용할 수 있어요!
 						</p>
-						<a class="button" href="loginForm">로그인</a>
+						<a class="button" href="/member/loginForm">로그인</a>
 					</div>
 				</div>
 			</div>
@@ -278,7 +271,7 @@
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="#">홍보게시판</a>
+						<a href="/board/promotionboard/promotionBoardList">홍보게시판</a>
 					</h3>
 					<a class="list" href="#"><time>10/17 21:49</time>
 						<p>서울시에서 진행하는 MBTI모임</p>
@@ -339,7 +332,7 @@
 		var _diffTime = _clientTime - _serverTime;
 		var _apiServerUrl = 'https://api.everytime.kr';
 	</script>
-	<script async="" src="/resources/js/js"></script>
+	<script src="/resources/js/js"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() {
@@ -348,6 +341,5 @@
 		gtag('js', new Date());
 		gtag('config', 'UA-22022140-4');
 	</script>
-
 </body>
 </html>
