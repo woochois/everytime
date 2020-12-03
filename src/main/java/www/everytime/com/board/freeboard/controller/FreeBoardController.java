@@ -68,7 +68,6 @@ public class FreeBoardController {
 	public String insert(FreeBoard freeboard, String pageNum, HttpSession session, Model model) {
 		String id = (String)session.getAttribute("id");		
 		Member member = ms.select(id);		
-		/* model.addAttribute("nickname", member.getNickname()); */
 		model.addAttribute("member", member);
 		model.addAttribute("pageNum", pageNum);
 		

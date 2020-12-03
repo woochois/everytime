@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	function frDelete(frbno, frrno){
 		var sendData = 'fbno=' + frbno + '&frrno=' + frrno + '&pageNum=${pageNum}';
-		$.post('/frDelete', sendData, function(data){
+		$.post('/reply/frDelete', sendData, function(data){
 			alert("삭제되었습니다");
 			$('#freeReplyListDisp').load(window.location.href+"#freeReplyListDisp");
 		});				
@@ -28,7 +28,7 @@
 	<script>
 		function frecFunc() {
 			alert("추천");
-			window.location.href = "/frrRec";
+			window.location.href = "/reply/frrRec";
 		};
 	</script>
 
@@ -62,7 +62,7 @@
 						<td>${freereply.frcontents }</td>
 						<td>${freereply.frregdate }</td>
 						<td>
-							<form action="/frrRec/fbno/${fbno}/pageNum/${pageNum}" id="frecform">
+							<form action="/reply/frrRec/fbno/${fbno}/pageNum/${pageNum}" id="frecform">
 								<input type="hidden" name="frrpno" value="${freereply.frrno}" />
 								<input type="hidden" name="fbno" value="${freereply.frbno}" />
 								<button type="submit" id="frecbutton" class="btn btn-outline-danger">
@@ -78,7 +78,7 @@
 						<td>
 							<!-- 댓글 작성자와 로그인 회원의 닉네임이 같으면 --> <c:if
 								test="${freereply.frnickname==member.nickname}">
-								<a href="/freeReplyDelete/frbno/${freereply.frbno }/frrno/${freereply.frrno }/pageNum/${pageNum}"
+								<a href="/reply/freeReplyDelete/frbno/${freereply.frbno }/frrno/${freereply.frrno }/pageNum/${pageNum}"
 										class="btn btn-outline-danger" id="">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   								<path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
