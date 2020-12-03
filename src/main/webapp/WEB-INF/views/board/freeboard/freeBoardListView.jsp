@@ -1,58 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>에브리타임</title>
-
-<!-- <meta name="referrer" content="origin">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="fb:app_id" content="258676027581965">
-<meta property="og:type" content="website">
-<meta property="og:image"
-	content="https://everytime.kr/images/og_image.png">
-<meta property="og:url" content="https://everytime.kr/389131">
-<meta property="og:site_name" content="에브리타임">
-<meta property="og:title" content="에브리타임">
-<meta property="og:description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
-<meta name="description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
-<meta name="keywords"
-	content="에브리타임, 에타, everytime, 시간표, 수강신청, 강의평가, 학점계산기, 학식, 오늘의학식, 책방, 중고책, 대학생, 대학교, 대학, 대학생 시간표, 대학교 시간표, 대학생 커뮤니티, 대학교 커뮤니티, 시간표 앱, 시간표 어플">
-<meta name="naver-site-verification"
-	content="7366738375e320e44bd1c743b364db13086a7b0e">
-<meta name="robots" content="noindex"> -->
-<link type="text/css" href="/resources/css/common.css" rel="stylesheet">
-<link type="text/css" href="/resources/css/common.partial.css"
+<link type="text/css" href="../../resources/css/common.css" rel="stylesheet">
+<link type="text/css" href="../../resources/css/common.partial.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.article.css"
+<link type="text/css" href="../../resources/css/container.article.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.community.css"
+<link type="text/css" href="../../resources/css/container.community.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.modal.css"
+<link type="text/css" href="../../resources/css/container.modal.css"
 	rel="stylesheet">
 <link href="#" rel="shortcut icon">
 
 <link rel="stylesheet"
-	href="/resources/bootstrap/css/bootstrap-grid.min.css">
+	href="../../resources/bootstrap/css/bootstrap-grid.min.css">
 <link rel="stylesheet"
-	href="/resources/bootstrap/css/bootstrap-reboot.min.css">
-<!-- <script type="text/javascript" async="" src="resources/js/analytics.js"></script>
-<script type="text/javascript"
-	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
-<script type="text/javascript"
-	src="/resources/js/extensions.underscore-min.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
-<script type="text/javascript"
-	src="/resources/js/extensions.canvas-to-blob.min.js"></script>
-<script type="text/javascript"
-	src="/resources/js/extensions.load-image.all.min.js"></script>
-<script type="text/javascript" src="/resources/js/community.side.js"></script>
-<script type="text/javascript" src="/resources/js/message.send.js"></script>
- -->
+	href="../../resources/bootstrap/css/bootstrap-reboot.min.css">
 <script type="text/javascript">
 	$(function() {
 		$('#freeReplyListDisp').load(
@@ -75,10 +43,6 @@
 </script>
 <style>
 #recbutton {
-	/* background: url( "/resources/images/recommend.png" ) no-repeat; */
-	/* border: 1px solid white;
-	width: 120px;
-	height: 40px; */
 	cursor: pointer;
 	color: red;		
 } 
@@ -102,19 +66,19 @@
 	<nav>
 		<div class="wrap">
 			<div id="logo">
-				<a href="/main"><img src="/resources/images/nav.logo.png"></a>
+				<a href="../../main"><img src="../../resources/images/nav.logo.png"></a>
 				<p>
 					<span class="name multiple">에브리타임</span><span class="subname">일산학원</span>
 				</p>
 			</div>
 			<div id="account">
 				<c:if test="${not empty member.id }">
-					<a href="#" title="쪽지함" class="icon message">쪽지함</a>
-					<a href="/mypage" title="내 정보" class="icon my">내 정보</a>
+					<a href="../../message/my_receivedMail" title="쪽지함" class="icon message">쪽지함</a>
+					<a href="../../member/mypage" title="내 정보" class="icon my">내 정보</a>
 				</c:if>
 				<c:if test="${empty member.id }">
-					<a href="/loginForm" class="button">로그인</a>
-					<a href="/registerForm" class="button red">회원가입</a>'
+					<a href="../../member/loginForm" class="button">로그인</a>
+					<a href="../../member/registerForm" class="button red">회원가입</a>'
 			</c:if>
 			</div>
 			<ul id="menu">
@@ -123,7 +87,7 @@
 				<li><a href="#">강의평가</a></li>
 				<li><a href="#">학점계산기</a></li>
 				<li><a href="#">친구</a></li>
-				<li><a href="/books">책방</a></li>
+				<li><a href="../../books/books">책방</a></li>
 				<li><a href="#">캠퍼스픽</a></li>
 			</ul>
 		</div>
@@ -139,7 +103,7 @@
 					<li><a href="#" data-id="389411">졸업생게시판</a></li>
 					<li><a href="#" data-id="389220" class="new">새내기게시판</a></li>
 					<li><a href="#" data-id="389359" class="new">장터게시판</a></li>
-					<li><a href="/promotionBoardList" data-id="367503">홍보게시판</a></li>
+					<li><a href="../promotionboard/promotionBoardList" data-id="367503">홍보게시판</a></li>
 					<li><a href="#" data-id="418833">동아리·학회</a></li>
 				</ul>
 			</div>
@@ -217,7 +181,7 @@
 		</table>
 
 		<!-- 댓글 작성 폼 -->
-		<form action="" name="frm" id="frm">
+		<form name="frm" id="frm">
 			<input type="hidden" name="frbno" value="${freeboard.fbno }" />
 			<h3>댓글 작성</h3>
 			<!-- member.id -->
@@ -228,7 +192,6 @@
 					<td><textarea name="frcontents" id="" cols="30" rows="3"></textarea>
 					</td>
 					<td colspan="2">
-						<!-- <input type="button" value="댓글 입력" id="frInsert" size="4" /></td> -->
 						<input type="button" value="댓글 입력" id="frInsert" size="4" />
 					</td>
 				</tr>

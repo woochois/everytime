@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="../../header.jsp" %>
 <!DOCTYPE html>
 <html>
-<link type="text/css" href="/resources/css/common.css" rel="stylesheet">
-<link type="text/css" href="/resources/css/common.partial.css"
+<link type="text/css" href="../../resources/css/common.css" rel="stylesheet">
+<link type="text/css" href="../../resources/css/common.partial.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.article.css"
+<link type="text/css" href="../../resources/css/container.article.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.community.css"
+<link type="text/css" href="../../resources/css/container.community.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.modal.css"
+<link type="text/css" href="../../resources/css/container.modal.css"
 	rel="stylesheet">
 <link href="#" rel="shortcut icon">
 <head>

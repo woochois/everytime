@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+<%@ include file="../../header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,54 +9,36 @@
 
 <meta name="referrer" content="origin">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="fb:app_id" content="258676027581965">
-<meta property="og:type" content="website">
-<meta property="og:image"
-	content="https://everytime.kr/images/og_image.png">
-<meta property="og:url" content="https://everytime.kr/389131">
-<meta property="og:site_name" content="에브리타임">
-<meta property="og:title" content="에브리타임">
-<meta property="og:description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
-<meta name="description"
-	content="전국 400개 대학을 지원하는 대학교 커뮤니티 및 시간표 서비스. 시간표 작성 및 학업 관리, 학교 생활 정보, 학교별 익명 커뮤니티 기능을 제공합니다.">
-<meta name="keywords"
-	content="에브리타임, 에타, everytime, 시간표, 수강신청, 강의평가, 학점계산기, 학식, 오늘의학식, 책방, 중고책, 대학생, 대학교, 대학, 대학생 시간표, 대학교 시간표, 대학생 커뮤니티, 대학교 커뮤니티, 시간표 앱, 시간표 어플">
-<meta name="naver-site-verification"
-	content="7366738375e320e44bd1c743b364db13086a7b0e">
 <meta name="robots" content="noindex">
-<link type="text/css" href="/resources/css/common.css" rel="stylesheet">
-<link type="text/css" href="/resources/css/common.partial.css"
+<link type="text/css" href="../../resources/css/common.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.article.css"
+<link type="text/css" href="../../resources/css/common.partial.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.community.css"
+<link type="text/css" href="../../resources/css/container.article.css"
 	rel="stylesheet">
-<link type="text/css" href="/resources/css/container.modal.css"
+<link type="text/css" href="../../resources/css/container.community.css"
+	rel="stylesheet">
+<link type="text/css" href="../../resources/css/container.modal.css"
 	rel="stylesheet">
 <link href="#" rel="shortcut icon">
-
 <link rel="stylesheet"
-	href="/resources/bootstrap/css/bootstrap-grid.min.css">
+	href="../../resources/bootstrap/css/bootstrap-grid.min.css">
 <link rel="stylesheet"
-	href="/resources/bootstrap/css/bootstrap-reboot.min.css">
-
-
-
-
-<script type="text/javascript" async="" src="resources/js/analytics.js"></script>
+	href="../../resources/bootstrap/css/bootstrap-reboot.min.css">
+<script type="text/javascript" src="../..resources/js/analytics.js"></script>
 <script type="text/javascript"
-	src="/resources/js/extensions.jquery-1.10.2.min.js"></script>
+	src="../../resources/js/extensions.jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
-	src="/resources/js/extensions.underscore-min.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
+	src="../../resources/js/extensions.underscore-min.js"></script>
+<script type="text/javascript" src="../../resources/js/common.js"></script>
 <script type="text/javascript"
-	src="/resources/js/extensions.canvas-to-blob.min.js"></script>
+	src="../../resources/js/extensions.canvas-to-blob.min.js"></script>
 <script type="text/javascript"
-	src="/resources/js/extensions.load-image.all.min.js"></script>
-<script type="text/javascript" src="/resources/js/board.index.js"></script>
-<script type="text/javascript" src="/resources/js/community.side.js"></script>
-<script type="text/javascript" src="/resources/js/message.send.js"></script>
+	src="../../resources/js/extensions.load-image.all.min.js"></script>
+<script type="text/javascript" src="../../resources/js/board.index.js"></script>
+<script type="text/javascript"
+	src="../../resources/js/community.side.js"></script>
+<script type="text/javascript" src="../../resources/js/message.send.js"></script>
 
 <style>
 input[type=submit] {
@@ -74,32 +56,25 @@ input[type=submit] {
 	text-align: right;
 }
 </style>
-<!-- <script type="text/javascript">
-$(function(){
-	$("#writeArticleButton").click(function(){
-		
-	});
-});	
-}
-</script> -->
 </head>
 <body>
 	<nav>
 		<div class="wrap">
 			<div id="logo">
-				<a href="/main"><img src="/resources/images/nav.logo.png"></a>
+				<a href="/main"><img src="../../resources/images/nav.logo.png"></a>
 				<p>
 					<span class="name multiple">에브리타임</span><span class="subname">일산학원</span>
 				</p>
 			</div>
 			<div id="account">
 				<c:if test="${not empty member.id }">
-					<a href="/messageForm" title="쪽지함" class="icon message">쪽지함</a>
-					<a href="/mypage" title="내 정보" class="icon my">내 정보</a>
+					<a href="../../message/my_receivedMail" title="쪽지함"
+						class="icon message">쪽지함</a>
+					<a href="../../member/mypage" title="내 정보" class="icon my">내 정보</a>
 				</c:if>
 				<c:if test="${empty member.id }">
-					<a href="/loginForm" class="button">로그인</a>
-					<a href="/registerForm" class="button red">회원가입</a>'
+					<a href="../../member/loginForm" class="button">로그인</a>
+					<a href="../../member/registerForm" class="button red">회원가입</a>'
 			</c:if>
 			</div>
 			<ul id="menu">
@@ -108,7 +83,7 @@ $(function(){
 				<li><a href="#">강의평가</a></li>
 				<li><a href="#">학점계산기</a></li>
 				<li><a href="#">친구</a></li>
-				<li><a href="/books">책방</a></li>
+				<li><a href="../../books//books">책방</a></li>
 				<li><a href="#">캠퍼스픽</a></li>
 			</ul>
 		</div>
@@ -123,7 +98,7 @@ $(function(){
 					<li><a href="#" data-id="389411">졸업생게시판</a></li>
 					<li><a href="#" data-id="389220" class="new">새내기게시판</a></li>
 					<li><a href="#" data-id="389359" class="new">장터게시판</a></li>
-					<li><a href="/promotionBoardList" data-id="367503">홍보게시판</a></li>
+					<li><a href="../promotionboard/promotionBoardList" data-id="367503">홍보게시판</a></li>
 					<li><a href="#" data-id="418833">동아리·학회</a></li>
 				</ul>
 			</div>
@@ -159,20 +134,21 @@ $(function(){
 			<a role="button" data-toggle="collapse" data-parent="#accordion"
 				href="#newArticle" aria-expanded="false" id="writeArticleButton">새
 				글을 작성해주세요!</a>
-			
+
 			<form action="/insert" class="write">
 				<div class="panel-group" id="accordion" role="tablist"
 					aria-multiselectable="true">
 
 					<div class="panel panel-default">
-						
+
 						<div id="newArticle" class="panel-collapse collapse"
 							role="tabpanel">
 							<div class="panel-body">
 								<div>
-									<input type="hidden" name="fnickname" value="${member.nickname}" /><br/>
-									<input type="text" name="ftitle" required="required"
-										autofocus="autofocus" placeholder="글 제목 입력" class="title" />
+									<input type="hidden" name="fnickname"
+										value="${member.nickname}" /><br /> <input type="text"
+										name="ftitle" required="required" autofocus="autofocus"
+										placeholder="글 제목 입력" class="title" />
 								</div>
 								<div>
 									<textarea name="fcontents" required="required"
@@ -336,16 +312,16 @@ $(function(){
 					<h3>
 						<a>실시간 인기 글</a>
 					</h3>
-					<a class="article" href="https://everytime.kr/389131/v/151586216">
-					<p class="title">예과 2학년</p>
+					<a class="article" href="#">
+						<p class="title">예과 2학년</p>
 						<p class="small">화이팅!</p>
 						<h4>자유게시판</h4>
 						<ul class="status">
 							<li class="vote active">7</li>
 							<li class="comment active">9</li>
 						</ul>
-						<hr></a><a class="article"
-						href="https://everytime.kr/389131/v/151593097">
+						<hr>
+					</a><a class="article" href="#">
 						<p class="title">타임 매직!</p>
 						<p class="small">
 							한달 기념 QnA를 할까 생각중이라고 저번에 글을 썼더니 그 글에 질문을 하시는 분이... 꽤 있더라구요...<br>이번엔
@@ -356,29 +332,22 @@ $(function(){
 							<li class="vote active">4</li>
 							<li class="comment active">9</li>
 						</ul>
-						<hr></a>
+						<hr>
+					</a>
 				</div>
 			</div>
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="https://everytime.kr/hotarticle">HOT 게시물<span>더
-								보기</span></a>
+						<a href="#">HOT 게시물<span>더 보기</span></a>
 					</h3>
-					<a class="list" href="https://everytime.kr/389220/v/151511635"><time>11/07
-							02:32</time>
+					<a class="list" href="#"><time>11/07 02:32</time>
 						<p>스펙타클 안가요</p>
-						<hr></a><a class="list"
-						href="https://everytime.kr/389131/v/151458036"><time>11/06
-							18:29</time>
+						<hr></a><a class="list" href="#"><time>11/06 18:29</time>
 						<p>학교가 발전하려면 근처 원룸들 다 탱크로 밀어버려야함</p>
-						<hr></a><a class="list"
-						href="https://everytime.kr/389131/v/151335406"><time>11/05
-							19:09</time>
+						<hr></a><a class="list" href="#"><time>11/05 19:09</time>
 						<p>간호대 부심의 실체가 뭔지 알아?</p>
-						<hr></a><a class="list"
-						href="https://everytime.kr/389131/v/151212555"><time>11/04
-							21:24</time>
+						<hr></a><a class="list" href="#"><time>11/04 21:24</time>
 						<p>ㄹㅇ</p>
 						<hr></a>
 				</div>
@@ -386,8 +355,7 @@ $(function(){
 			<div class="card">
 				<div class="board">
 					<h3>
-						<a href="https://everytime.kr/bestarticle">BEST 게시판<span>더
-								보기</span></a>
+						<a href="#">BEST 게시판<span>더 보기</span></a>
 					</h3>
 				</div>
 			</div>

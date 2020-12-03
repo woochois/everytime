@@ -11,13 +11,13 @@
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
 		alert("추천 완료");
-		location.href="/board/freeboard/freeBoardListView/fbno/${fbno}/pageNum/${pageNum}";
+		location.href="/freeBoardListView/fbno/${fbno}/pageNum/${pageNum}";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
 		alert("추천 취소");
-		location.href="/board/freeboard/freeBoardListView/fbno/${fbno}/pageNum/${pageNum}";
+		location.href="/freeBoardListView/fbno/${fbno}/pageNum/${pageNum}";
 	</script>
 </c:if>
 </body>
