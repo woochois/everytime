@@ -16,14 +16,14 @@
 		isbn
 		= #{isbn} limit 0,1;
 	</select>
-	
+
 	<insert id="listinsert" parameterType="booksell">
 		insert into booksell ( contents, underline, writing, cover, nameentry,
-		pagecolor, pagestate, sellprice, delivery, directdeal, location )
+		pagecolor, pagestate, imgfile1, sellprice, delivery, directdeal,
+		location )
 		values (#{contents}, #{underline}, #{writing}, #{cover}, #{nameentry},
-		#{pagecolor}, #{pagestate}, #{sellprice}, #{delivery}, #{directdeal},
-		#{location})
-		
+		#{pagecolor}, #{pagestate}, #{imgfile1}, #{sellprice}, #{delivery},
+		#{directdeal}, #{location})
 	</insert>
 
 </mapper>

@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link type="text/css" href="../resources/css/common.css" rel="stylesheet">
+<link type="text/css" href="../resources/css/common.css"
+	rel="stylesheet">
 <link type="text/css" href="../resources/css/common.partial.css"
 	rel="stylesheet">
 <link type="text/css" href="../resources/css/container.community.css"
@@ -42,7 +43,7 @@
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script>
+<script type="text/javascript">
 	//임의의 file object영역
 	var files = {};
 	var previewIndex = 0;
@@ -62,6 +63,15 @@
 			alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
 	}
 
+	function guid() {
+		function s4() {
+			return ((1 + Math.random()) * 0x10000 | 0).toString(16)
+					.substring(1);
+		}
+		return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4()
+				+ s4() + s4() + '_';
+	}
+
 	function setPreviewForm(file, img) {
 		var reader = new FileReader();
 		var path = "/Users/Hot_George/Documents/fileupload/";
@@ -69,16 +79,18 @@
 		//이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
 		reader.onload = function(img) {
 			var imgNum = previewIndex++;
+
 			$("#preview")
 					.append(
 							"<div class=\"preview-box\" value=\"" + imgNum +"\">"
 									+ "<img class=\"thumbnail\" src=\"" + img.target.result + "\"\/>"
-									+ "<input type='text' name='imgfile1' value='" + path + file.name +"'/>"
+									+ "<input type='text' id='uuid' name='imgfile1' value='" + path + file.name +"'/>"
 									+ "<a href=\"#\" value=\"" + imgNum
 									+ "\" onclick=\"deletePreview(this)\">"
 									+ "삭제" + "</a>" + "</div>");
 			resizeHeight();
 			files[imgNum] = file;
+
 		};
 
 		reader.readAsDataURL(file);
@@ -241,11 +253,12 @@
 
 				<div class="wrapper">
 					<div class="body">
-						<!-- 첨부 버튼 -->
+
 						<div id="attach">
-							<label class="waves-effect waves-teal btn-flat"
-								for="uploadInputBox">사진첨부</label> 
-								<input id="uploadInputBox" style="display: none" type="file" name="imgfile1" multiple />
+							<label class="waves-effect waves-teal btn-flat" id="show_uuid"
+								for="uploadInputBox">사진첨부</label> <input id="uploadInputBox"
+								style="display: none" type="file" name="file" multiple />
+
 						</div>
 
 						<!-- 미리보기 영역 -->
