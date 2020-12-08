@@ -10,9 +10,6 @@
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="naver-site-verification"
-	content="b9d866b15d44c9243c600cc22295794f83391370">
-
 <link rel="stylesheet" type="text/css"
 	href="../resources/css/assets/style.css">
 <script type="text/javascript"
@@ -50,66 +47,60 @@
 												for (let i = 0; i < data.documents.length; i++) {
 													array[i] = data.documents[i];
 													$("#book")
-													.append("<div class='container'><form action='bookSellForm'>"
-																	+ "ISBN : <input readonly id='isbn' name='isbn' value='"+array[i].isbn+ "'/><br/>"
-																	+ "책 제목 : <input readonly id='title' name='title' value='"+array[i].title+"'/><br/>"
-																	+ "저자 : <input readonly id='authors' name='authors' value='"+array[i].authors+"'/><br/>"
-																	+ "출판사 : <input readonly id='publisher' name='publisher' value='"+array[i].publisher+"'/><br/>"
-																	+ "가격 : <input readonly id='price' name='price' value='"+array[i].price+"'/><br/>"
-																	+ "옮긴이 : <input readonly id='translators' name='translators' value='"+array[i].translators+"'/><br/>"
-																	+ "출판일 : <input readonly id='datetime' name='datetime' value='"+array[i].datetime+"'/><br/>"																			
-																	+ "<input type='hidden' id='thumbnail' name='thumbnail' value='"+array[i].thumbnail+"'></input><br/>"
-																	+ "<img src='"+array[i].thumbnail+"'/>"
-																	+ "<input type='submit' value='선택'/><br/></form></div>");
+															.append(
+																	"<div class='container'><form action='bookSellForm'>"
+																			+ "ISBN : <input readonly id='isbn' name='isbn' value='"+array[i].isbn+ "'/><br/>"
+																			+ "책 제목 : <input readonly id='title' name='title' value='"+array[i].title+"'/><br/>"
+																			+ "저자 : <input readonly id='authors' name='authors' value='"+array[i].authors+"'/><br/>"
+																			+ "출판사 : <input readonly id='publisher' name='publisher' value='"+array[i].publisher+"'/><br/>"
+																			+ "가격 : <input readonly id='price' name='price' value='"+array[i].price+"'/><br/>"
+																			+ "옮긴이 : <input readonly id='translators' name='translators' value='"+array[i].translators+"'/><br/>"
+																			+ "출판일 : <input readonly id='datetime' name='datetime' value='"+array[i].datetime+"'/><br/>"
+																			+ "<input type='hidden' id='thumbnail' name='thumbnail' value='"+array[i].thumbnail+"'></input><br/>"
+																			+ "<img src='"+array[i].thumbnail+"'/>"
+																			+ "<input type='submit' value='선택'/><br/></form></div>");
 												}
-												$('#search').click(function() {
-													$('#book').empty();
-													$("#book")
-													.append("<div class='container'><form action='bookSellForm'>"
-																	+ "ISBN : <input readonly id='isbn' name='isbn' value='"+array[i].isbn+ "'/><br/>"
-																	+ "책 제목 : <input readonly id='title' name='title' value='"+array[i].title+"'/><br/>"
-																	+ "저자 : <input readonly id='authors' name='authors' value='"+array[i].authors+"'/><br/>"
-																	+ "출판사 : <input readonly id='publisher' name='publisher' value='"+array[i].publisher+"'/><br/>"
-																	+ "가격 : <input readonly id='price' name='price' value='"+array[i].price+"'/><br/>"
-																	+ "옮긴이 : <input readonly id='translators' name='translators' value='"+array[i].translators+"'/><br/>"
-																	+ "출판일 : <input readonly id='datetime' name='datetime' value='"+array[i].datetime+"'/><br/>"																			
-																	+ "<input type='hidden' id='thumbnail' name='thumbnail' value='"+array[i].thumbnail+"'></input><br/>"
-																	+ "<img src='"+array[i].thumbnail+"'/>"
-																	+ "<input type='submit' value='선택'/><br/></form></div>");
+												$('#search')
+														.click(
+																function() {
+																	$('#book')
+																			.empty();
+																	$("#book")
+																			.append(
+																					"<div class='container'><form action='bookSellForm'>"
+																							+ "ISBN : <input readonly id='isbn' name='isbn' value='"+array[i].isbn+ "'/><br/>"
+																							+ "책 제목 : <input readonly id='title' name='title' value='"+array[i].title+"'/><br/>"
+																							+ "저자 : <input readonly id='authors' name='authors' value='"+array[i].authors+"'/><br/>"
+																							+ "출판사 : <input readonly id='publisher' name='publisher' value='"+array[i].publisher+"'/><br/>"
+																							+ "가격 : <input readonly id='price' name='price' value='"+array[i].price+"'/><br/>"
+																							+ "옮긴이 : <input readonly id='translators' name='translators' value='"+array[i].translators+"'/><br/>"
+																							+ "출판일 : <input readonly id='datetime' name='datetime' value='"+array[i].datetime+"'/><br/>"
+																							+ "<input type='hidden' id='thumbnail' name='thumbnail' value='"+array[i].thumbnail+"'></input><br/>"
+																							+ "<img src='"+array[i].thumbnail+"'/>"
+																							+ "<input type='submit' value='선택'/><br/></form></div>");
 
-												});
+																});
 											});
 						});
-		
 
 	});
 </script>
 </head>
 <body>
 
-	
-<div id="title">
-	<a href="/" class="logo"><img
-		src="../resources/images/assets/logo.png" alt="에브리타임 책방"></a>
-</div>
-	
 
-	
+	<div id="title">
+		<a href="/" class="logo"><img
+			src="../resources/images/assets/logo.png" alt="에브리타임 책방"></a>
+	</div>
 
-	
-<div class="container" align="center">
-	<input type="text" id="bookName"/>
-	<button id="search" >검색</button>
-</div>
+	<div class="container" align="center">
+		<input type="text" id="bookName" />
+		<button id="search">검색</button>
+	</div>
 
-<div class="container" id="booklist">
-	<p></p>
-</div>
+	<div id="book"></div>
 
-<div id="book">
-
-</div>
-<form action="/bookSellForm"></form>
 
 	<div id="bar">
 		<nav>
@@ -122,22 +113,6 @@
 
 		</nav>
 	</div>
-
-	<script type="text/javascript">
-		(function(i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script',
-				'https://www.google-analytics.com/analytics.js', 'ga');
-		ga('create', 'UA-82918907-1', 'auto');
-		ga('send', 'pageview');
-	</script>
 </body>
 </html>
 

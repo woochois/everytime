@@ -115,7 +115,7 @@ create table booklist (
     publisher 			varchar(100),
     price 				varchar(100),
     translators			varchar(100),
-    datetime 			varchar(100),
+    publishdate 		varchar(100),
     thumbnail 			varchar(1000)
 );
 

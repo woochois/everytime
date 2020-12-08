@@ -25,6 +25,8 @@ public class BookSell {
 	private String delivery; // 택배
 	private String directdeal; // 직거래
 	private String location; // 장소
+ 
+	private String images;	// 로컬에 저장된 이미지 이름
 	/*
 	 * private String map; // 지도
 	 */

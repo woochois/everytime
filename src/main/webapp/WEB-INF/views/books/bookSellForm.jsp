@@ -12,7 +12,6 @@
 	rel="stylesheet">
 <link type="text/css" href="../resources/css/container.community.css"
 	rel="stylesheet">
-<link href="#" rel="shortcut icon">
 <link rel="stylesheet" type="text/css"
 	href="../resources/css/assets/style.css">
 <script type="text/javascript" src="../js/analytics.js"></script>
@@ -25,6 +24,23 @@
 <script type="text/javascript" src="../resources/js/community.index.js"></script>
 <script type="text/javascript" src="../resources/js/assets/sell.js"></script>
 <style>
+#preview {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+#pre0 {
+	float: left;
+}
+
+#pre1 {
+	float: left;
+}
+
+#pre2 {
+	float: right;
+}
+
 #preview img {
 	width: 100px;
 	height: 100px;
@@ -47,7 +63,6 @@
 	//임의의 file object영역
 	var files = {};
 	var previewIndex = 0;
-
 	// image preview 기능 구현
 	// input = file object[]
 	function addPreview(input) {
@@ -82,12 +97,12 @@
 
 			$("#preview")
 					.append(
-							"<div class=\"preview-box\" value=\"" + imgNum +"\">"
-									+ "<img class=\"thumbnail\" src=\"" + img.target.result + "\"\/>"
-									+ "<input type='text' id='uuid' name='imgfile1' value='" + path + file.name +"'/>"
-									+ "<a href=\"#\" value=\"" + imgNum
-									+ "\" onclick=\"deletePreview(this)\">"
-									+ "삭제" + "</a>" + "</div>");
+							"<div class='preview-box' id='pre" + imgNum +"' value='" + imgNum +"'>"
+									+ "<img class='thumbnail' src='" + img.target.result + "'/>"
+									+ "<input type='text' id='uuid' name='imgfile" + ++imgNum + "' value='" + path + file.name + "' />"
+									+ "<a href='#' value='" + imgNum
+									+ "' onclick='deletePreview(this)'>" + "삭제"
+									+ "</a>" + "</div>");
 			resizeHeight();
 			files[imgNum] = file;
 
@@ -174,6 +189,9 @@
 			<div class="group group-book">
 				<h2>책 정보</h2>
 				<p>
+					<input type="text" value="${booklist.listnum }" readonly />
+				</p>
+				<p>
 					책 제목 : <input type="text" value="${booklist.title }" readonly />
 				</p>
 				<p>
@@ -197,10 +215,14 @@
 		</c:forEach>
 	</form>
 
-	<form id="sell" action="/upload" enctype="multipart/form-data"
+	<form id="sell" action="/books/upload" enctype="multipart/form-data"
 		method="post">
 		<div class="items">
-
+			<c:forEach var="booklist" items="${booklist}">
+				<p>
+					<input type="text" name="listnum" value="${booklist.listnum }" />
+				</p>
+			</c:forEach>
 			<p>${member.nickname }</p>
 			<p>
 				추가설명을 적어주세요<br />
@@ -266,7 +288,6 @@
 
 					</div>
 				</div>
-
 
 				<h2>거래 수단</h2>
 				<p>

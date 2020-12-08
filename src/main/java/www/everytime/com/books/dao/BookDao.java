@@ -15,4 +15,6 @@ public interface BookDao {
 
 	void fileinsert(String saveFile);
 
+	int imagesupdate(BookSell booksell);
+
 }

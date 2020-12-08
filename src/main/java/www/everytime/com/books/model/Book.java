@@ -11,6 +11,6 @@ public class Book {
 	private String publisher;	// 출판사
 	private String price;		// 가격
 	private String translators;	// 옮긴이
-	private String datetime;	// 출판일
+	private String publishdate;	// 출판일
 	private String thumbnail; 	// 썸네일
 }

@@ -19,7 +19,6 @@ public class BookServiceImpl implements BookService{
 	
 	public void insert(Book book) {
 		bd.insert(book);
-		
 	}
 	
 	public List<Book> selectList(Book book) {
@@ -33,6 +32,10 @@ public class BookServiceImpl implements BookService{
 	public void fileinsert(String saveFile) {
 		bd.fileinsert(saveFile);
 		
+	}
+
+	public int imagesupdate(BookSell booksell) {
+		return bd.imagesupdate(booksell);
 	}
 
 }

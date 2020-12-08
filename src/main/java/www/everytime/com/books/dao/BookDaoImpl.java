@@ -19,7 +19,6 @@ public class BookDaoImpl implements BookDao{
 
 	public void insert(Book book) {
 		sst.insert("bookns.insert", book);
-		
 	}
 
 	public List<Book> selectList(Book book) {
@@ -33,6 +32,8 @@ public class BookDaoImpl implements BookDao{
 	public void fileinsert(String saveFile) {
 		sst.insert("bookns.fileinsert", saveFile);
 	}
-		
-	
+
+	public int imagesupdate(BookSell booksell) {
+		return sst.update("bookns.imagesupdate", booksell);
+	}
 }

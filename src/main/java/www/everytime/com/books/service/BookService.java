@@ -20,4 +20,7 @@ public interface BookService {
 
 	void fileinsert(String saveFile);
 
+	int imagesupdate(BookSell booksell);
+
+
 }
