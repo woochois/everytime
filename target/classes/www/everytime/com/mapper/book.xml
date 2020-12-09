@@ -2,30 +2,100 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookns">
+	<resultMap type="book" id="bookMap">
+		<result property="listnum" column="listnum" />
+		<result property="isbn" column="isbn" />
+		<result property="title" column="title" />
+		<result property="authors" column="authors" />
+		<result property="publisher" column="publisher" />
+		<result property="price" column="price" />
+		<result property="zipCode" column="zipCode" />
+		<result property="newAddr" column="newAddr" />
+		<result property="oldAddr" column="oldAddr" />
+		<result property="translators" column="translators" />
+		<result property="publishdate" column="publishdate" />
+		<result property="thumbnail" column="thumbnail" />
+	</resultMap>
+
+	<resultMap type="booksell" id="bookSellMap">
+		<result property="listnum" column="listnum" />
+		<result property="sellnum" column="sellnum" />
+		<result property="bnickname" column="bnickname" />
+		<result property="sellprice" column="sellprice" />
+		<result property="contents" column="contents" />
+		<result property="regdate" column="regdate" />
+		<result property="underline" column="underline" />
+		<result property="writing" column="writing" />
+		<result property="cover" column="cover" />
+		<result property="nameentry" column="nameentry" />
+		<result property="pagecolor" column="pagecolor" />
+		<result property="pagestate" column="pagestate" />
+		<result property="imgfile1" column="imgfile1" />
+		<result property="imgfile2" column="imgfile2" />
+		<result property="imgfile3" column="imgfile3" />
+		<result property="delivery" column="delivery" />
+		<result property="directdeal" column="directdeal" />
+		<result property="location" column="location" />
+	</resultMap>
+	
+	<resultMap type="booktotal" id="bookTotalMap">
+		<collection property="book" resultMap="bookMap"/>
+		<collection property="booksell" resultMap="bookSellMap"/>
+	</resultMap>
+
 	<insert id="insert" parameterType="book">
-		insert into booklist (isbn,title, authors, publisher, price, translators, publishdate, thumbnail)
-		values (#{isbn}, #{title}, #{authors}, #{publisher}, #{price}, #{translators}, #{publishdate}, #{thumbnail})
+		INSERT INTO booklist
+		(isbn,title, authors, publisher, price, translators,
+		publishdate,thumbnail)
+		SELECT #{isbn}, #{title}, #{authors},
+		#{publisher}, #{price},
+		#{translators}, #{publishdate}, #{thumbnail}
+		FROM dual
+		WHERE NOT EXISTS (
+		SELECT isbn
+		FROM booklist
+		WHERE isbn =
+		#{isbn}
+		)
 	</insert>
 
-	<select id="selectList" parameterType="book" resultType="book">
-		select * from (select * from booklist order by isbn=#{isbn} desc limit 1) as a
-		order by isbn=#{isbn} asc
+	<select id="selectBookList" parameterType="book" resultType="book">
+		select * from booklist where isbn=#{isbn}
+	</select>
+
+	<select id="selectBookSellList" resultMap="bookTotalMap">
+		select
+		l.listnum, l.isbn, l.title, l.authors, l.publisher,
+		l.price, l.translators,
+		l.publishdate, l.thumbnail, s.listnum, s.sellnum,
+		s.bnickname, s.sellprice,
+		s.contents, s.regdate, s.underline, s.writing,
+		s.cover, s.nameentry, s.pagecolor,
+		s.pagestate, s.imgfile1, s.imgfile2,
+		s.imgfile3, s.delivery, s.directdeal,
+		s.location
+		from booklist l
+		left join booksell s on l.listnum = s.listnum
+		order by l.listnum
 	</select>
 
 	<insert id="listinsert" parameterType="booksell">
 		insert into booksell (
-		listnum, contents, underline, writing, cover, nameentry,
-		pagecolor,
-		pagestate,
-		imgfile1, imgfile2, imgfile3, sellprice, delivery,
-		directdeal,
+		listnum, bnickname, contents, underline, writing, cover, nameentry,
+		pagecolor, pagestate, imgfile1, imgfile2, imgfile3, sellprice,
+		delivery, directdeal,
 		location )
-		values (#{listnum}, #{contents}, #{underline},
+		values (#{listnum}, #{bnickname},
+		#{contents},
+		#{underline},
 		#{writing}, #{cover},
 		#{nameentry},
-		#{pagecolor}, #{pagestate},
+		#{pagecolor},
+		#{pagestate},
 		#{imgfile1}, #{imgfile2},
-		#{imgfile3}, #{sellprice}, #{delivery},
+		#{imgfile3},
+		#{sellprice},
+		#{delivery},
 		#{directdeal}, #{location})
 	</insert>
 
@@ -34,5 +104,4 @@
 		imgfile1=#{imgfile1}, imgfile2=#{imgfile2}, imgfile3=#{imgfile3} where
 		listnum=#{listnum}
 	</update>
-
 </mapper>

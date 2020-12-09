@@ -12,13 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import www.everytime.com.books.model.Book;
 import www.everytime.com.books.model.BookSell;
+import www.everytime.com.books.model.BookTotal;
 import www.everytime.com.books.service.BookService;
 import www.everytime.com.member.model.Member;
 import www.everytime.com.member.service.MemberService;
@@ -34,7 +33,14 @@ public class BooksController {
 	private MemberService ms;
 
 	@RequestMapping("/books")
-	public String books() {
+	public String books(Book book, Model model) {
+		
+		List<Book> booklist1 = bs.selectBookList(book);
+		List<BookTotal> bookSellList = bs.selectBookSellList();
+		
+		model.addAttribute("booklist1", booklist1);
+		model.addAttribute("bookSellList", bookSellList);
+		
 		return "/books/books";
 	}
 
@@ -53,7 +59,7 @@ public class BooksController {
 		model.addAttribute("member", member);
 
 		// 데이터 가져오기
-		List<Book> booklist = bs.selectList(book);
+		List<Book> booklist = bs.selectBookList(book);
 
 		model.addAttribute("booklist", booklist);
 

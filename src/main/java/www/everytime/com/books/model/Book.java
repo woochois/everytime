@@ -1,8 +1,11 @@
 package www.everytime.com.books.model;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 
 @Data
+@Component
 public class Book {
 	private int listnum;
 	private String isbn; 		// ISBN

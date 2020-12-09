@@ -10,13 +10,12 @@
 <body>
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
-		alert("수정 성공");
 		location.href="/books/books";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">
 	<script type="text/javascript">
-		alert("수정 실패");
+		alert("이미지 업로드 실패");
 		history.go(-1);
 	</script>
 </c:if>

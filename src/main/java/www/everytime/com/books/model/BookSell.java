@@ -2,14 +2,17 @@ package www.everytime.com.books.model;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
 @Data
+@Component
 public class BookSell {
 	private int listnum; // 번호 FK
 	private int sellnum; // 번호 PK
+	private String bnickname; // 판매자 닉네임
 	private String sellprice; // 판매가
 	private String contents; // 내용
 	private Date regdate; // 날짜

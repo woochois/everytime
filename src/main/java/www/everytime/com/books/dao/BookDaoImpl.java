@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import www.everytime.com.books.model.Book;
 import www.everytime.com.books.model.BookSell;
+import www.everytime.com.books.model.BookTotal;
 
 @Repository
 public class BookDaoImpl implements BookDao{
@@ -21,10 +22,6 @@ public class BookDaoImpl implements BookDao{
 		sst.insert("bookns.insert", book);
 	}
 
-	public List<Book> selectList(Book book) {
- 		return sst.selectList("bookns.selectList", book);
- 	}
-
 	public void listinsert(BookSell booksell) {
 		sst.insert("bookns.listinsert", booksell);
 	}
@@ -35,5 +32,13 @@ public class BookDaoImpl implements BookDao{
 
 	public int imagesupdate(BookSell booksell) {
 		return sst.update("bookns.imagesupdate", booksell);
+	}
+
+	public List<Book> selectBookList(Book book) {
+		return sst.selectList("bookns.selectBookList", book);
+	}
+
+	public List<BookTotal> selectBookSellList() {
+		return sst.selectList("bookns.selectBookSellList");
 	}
 }

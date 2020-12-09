@@ -223,7 +223,7 @@
 					<input type="text" name="listnum" value="${booklist.listnum }" />
 				</p>
 			</c:forEach>
-			<p>${member.nickname }</p>
+			<input type="hidden" name="bnickname" value="${member.nickname }"/>
 			<p>
 				추가설명을 적어주세요<br />
 				<textarea name="contents" rows="" cols="" placeholder="(500자 이내)"
