@@ -118,11 +118,16 @@ create table booklist (
     publishdate 		varchar(100),
     thumbnail 			varchar(1000)
 );
+select * from booklist;
+drop table booklist;
+drop table booksell;
+select * from booksell;
 
 -- 책방 상세 판매 테이블
 create table booksell (
 	listnum 			int references booklist(listnum),
     sellnum 			int auto_increment primary key,
+    bnickname			varchar(30) references member(nickname),
     sellprice 			varchar(20),
     contents 			varchar(100),
 	regdate				datetime default current_timestamp,
@@ -150,5 +155,3 @@ CREATE table message (
     m_content           varchar(500) not null,    
     m_send_date         datetime default current_timestamp
 );
-
-select * from booksell;
