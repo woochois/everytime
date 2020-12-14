@@ -101,8 +101,6 @@
 			</form>
 		</div>
 		
-		
-		
 	</header>
 
 	<div id="items">
