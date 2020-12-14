@@ -1,6 +1,7 @@
 package www.everytime.com.books.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import www.everytime.com.books.model.Book;
 import www.everytime.com.books.model.BookSell;
@@ -18,6 +19,6 @@ public interface BookDao {
 
 	List<Book> selectBookList(Book book);
 
-	List<BookTotal> selectBookSellList();
+	List<Map<Book, BookTotal>> selectBookSellList(BookTotal booktotal);
 
 }

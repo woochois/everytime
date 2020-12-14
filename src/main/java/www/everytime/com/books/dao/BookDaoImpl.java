@@ -3,6 +3,7 @@ package www.everytime.com.books.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class BookDaoImpl implements BookDao{
 		return sst.selectList("bookns.selectBookList", book);
 	}
 
-	public List<BookTotal> selectBookSellList() {
-		return sst.selectList("bookns.selectBookSellList");
+	public List<Map<Book, BookTotal>> selectBookSellList(BookTotal booktotal) {
+		return sst.selectList("bookns.selectBookSellList", booktotal);
 	}
 }

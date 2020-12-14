@@ -37,10 +37,10 @@
 		<result property="directdeal" column="directdeal" />
 		<result property="location" column="location" />
 	</resultMap>
-	
-	<resultMap type="booktotal" id="bookTotalMap">
-		<collection property="book" resultMap="bookMap"/>
-		<collection property="booksell" resultMap="bookSellMap"/>
+
+	<resultMap type="HashMap" id="bookTotalMap">
+		<collection property="book" resultMap="bookMap" />
+		<collection property="booksell" resultMap="bookSellMap" />
 	</resultMap>
 
 	<insert id="insert" parameterType="book">
@@ -59,23 +59,33 @@
 		)
 	</insert>
 
-	<select id="selectBookList" parameterType="book" resultType="book">
+	<select id="selectBookList" parameterType="book"
+		resultType="book">
 		select * from booklist where isbn=#{isbn}
 	</select>
 
-	<select id="selectBookSellList" resultMap="bookTotalMap">
+	<select id="selectBookSellList" parameterType="booktotal" resultType="HashMap">
 		select
 		l.listnum, l.isbn, l.title, l.authors, l.publisher,
-		l.price, l.translators,
+		l.price,
+		l.translators,
 		l.publishdate, l.thumbnail, s.listnum, s.sellnum,
 		s.bnickname, s.sellprice,
-		s.contents, s.regdate, s.underline, s.writing,
+		s.contents, s.regdate, s.underline,
+		s.writing,
 		s.cover, s.nameentry, s.pagecolor,
-		s.pagestate, s.imgfile1, s.imgfile2,
+		s.pagestate, s.imgfile1,
+		s.imgfile2,
 		s.imgfile3, s.delivery, s.directdeal,
 		s.location
-		from booklist l
+		from
+		booklist l
 		left join booksell s on l.listnum = s.listnum
+		<where>
+			<if test="keyword != null and keyword != ''">
+				l.title like concat('%', #{keyword} ,'%')
+			</if>
+		</where>
 		order by l.listnum
 	</select>
 

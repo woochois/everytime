@@ -3,6 +3,7 @@ package www.everytime.com.books.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,8 @@ public class BookServiceImpl implements BookService{
 		return bd.selectBookList(book);
 	}
 
-	public List<BookTotal> selectBookSellList() {
-		return bd.selectBookSellList();
+	public List<Map<Book, BookTotal>> selectBookSellList(BookTotal booktotal) {
+		return bd.selectBookSellList(booktotal);
 	}
 
 }

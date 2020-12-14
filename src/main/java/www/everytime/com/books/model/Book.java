@@ -16,4 +16,5 @@ public class Book {
 	private String translators;	// 옮긴이
 	private String publishdate;	// 출판일
 	private String thumbnail; 	// 썸네일
+
 }

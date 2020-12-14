@@ -18,7 +18,6 @@
 	src="../resources/js/assets/jquery-3.1.0.min.js"></script>
 <script type="text/javascript"
 	src="../resources/js/assets/underscore-min.js"></script>
-<script type="text/javascript" src="../resources/js/assets/common.js"></script>
 <script type="text/javascript" src="../resources/js/assets/index.js"></script>
 <script>
 	$(function() {
@@ -91,42 +90,42 @@
 <body>
 	<header>
 		<div id="title">
-			<a href="/" class="logo"><img
+			<a href="../main" class="logo"><img
 				src="../resources/images/assets/logo.png" alt="에브리타임 책방"></a>
 		</div>
+		
+		
 		<div id="search">
-			<form>
-				<input id="bookName" type="text" name="keyword"
-					placeholder="구매할 책을 검색하세요!" autocomplete="off" />
-				<div class="searchbutton">
-					<span class="icons search-darkgray-16"></span>
-				</div>
+			<form action="/books/books" method="get">
+				<input type="text" name="keyword" placeholder="구매할 책을 검색하세요!"/>
 			</form>
 		</div>
+		
+		
+		
 	</header>
 
 	<div id="items">
 		<div class="header">
-			<button id="search">검색</button>
 			<c:forEach var="bookSellList" items="${bookSellList}">
 				<table>
 					<tr>
-						<td>${bookSellList.book.title}</td>
-						<td>${bookSellList.book.authors}</td>
-						<td>${bookSellList.book.publishdate}</td>
-						<td>${bookSellList.book.price}</td>
-						<td>${bookSellList.booksell.contents}</td>
-						<td>${bookSellList.booksell.underline}</td>
-						<td>${bookSellList.booksell.writing}</td>
-						<td>${bookSellList.booksell.cover}</td>
-						<td>${bookSellList.booksell.nameentry}</td>
-						<td>${bookSellList.booksell.pagecolor}</td>
-						<td>${bookSellList.booksell.pagestate}</td>
-						<td><img src="${bookSellList.booksell.imgfile1}"/></td>
-						<td><img src="${bookSellList.booksell.imgfile2}"/></td>
-						<td><img src="${bookSellList.booksell.imgfile3}"/></td>
-						<td>${bookSellList.booksell.delivery}</td>
-						<td>${bookSellList.booksell.directdeal}</td>
+						<td>${bookSellList.title}</td>
+						<td>${bookSellList.authors}</td>
+						<td>${bookSellList.publishdate}</td>
+						<td>${bookSellList.price}</td>
+						<td>${bookSellList.contents}</td>
+						<td>${bookSellList.underline}</td>
+						<td>${bookSellList.writing}</td>
+						<td>${bookSellList.cover}</td>
+						<td>${bookSellList.nameentry}</td>
+						<td>${bookSellList.pagecolor}</td>
+						<td>${bookSellList.pagestate}</td>
+						<td><img src="${bookSellList.imgfile1}"/></td>
+						<td><img src="${bookSellList.imgfile2}"/></td>
+						<td><img src="${bookSellList.imgfile3}"/></td>
+						<td>${bookSellList.delivery}</td>
+						<td>${bookSellList.directdeal}</td>
 					</tr>
 				</table>
 			</c:forEach>

@@ -3,6 +3,7 @@ package www.everytime.com.books.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public interface BookService {
 
 	List<Book> selectBookList(Book book);
 
-	List<BookTotal> selectBookSellList();
+	List<Map<Book, BookTotal>> selectBookSellList(BookTotal booktotal);
 
 
 }

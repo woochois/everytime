@@ -2,6 +2,7 @@ package www.everytime.com.books.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -33,12 +34,10 @@ public class BooksController {
 	private MemberService ms;
 
 	@RequestMapping("/books")
-	public String books(Book book, Model model) {
+	public String books(Model model, BookTotal booktotal) {
 		
-		List<Book> booklist1 = bs.selectBookList(book);
-		List<BookTotal> bookSellList = bs.selectBookSellList();
+		List<Map<Book, BookTotal>> bookSellList = bs.selectBookSellList(booktotal);
 		
-		model.addAttribute("booklist1", booklist1);
 		model.addAttribute("bookSellList", bookSellList);
 		
 		return "/books/books";
